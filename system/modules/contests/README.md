@@ -1,0 +1,5 @@
+# Contests Module for Coolbrew
+
+Where I worked, contests were a common request for marketing websites. They tended to be complicated and short-lived, so the return on the time invested to build them often felt less than ideal. This module was a way to streamline the process of creating them while also adding some features that were often requested but we weren’t able to build on a per-contest basis such as “Tell a Friend”.
+
+The module features web-based templates saved in the database with the ability to define landing and entry pages, short and long rules, and error pages when the contest is closed or a user tries to enter too many times. It also allows for a Tell A Friend feature, an optional quiz to go along with the entry form, and the ability to select random items such as ads to be displayed anywhere along the process. Entrants are sent an email upon a successful entry.

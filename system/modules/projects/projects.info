@@ -1,0 +1,9 @@
+$Id$
+
+id = projects
+name = Projects
+description = Implements a project management scheme based on the Scrum method.
+extends = admin
+base path = admin/projects.php
+default page = cp/sprints/index
+restricted = 1

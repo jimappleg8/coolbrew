@@ -1,0 +1,9 @@
+$Id$
+
+id = htdig
+name = htDig Search
+description = Implements tags to integrate with the htDig search engine
+extends = admin
+base path = 
+default page = 
+restricted = 1

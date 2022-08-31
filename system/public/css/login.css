@@ -1,0 +1,9 @@
+
+.Container { margin:0 auto 0 auto; text-align:center; width:500px; }
+
+div#LogoBox { margin-bottom:15px; }
+div#LogoBox img { padding:5px 0 0 0; }
+div#LogoBox.white img { background:#FFF; padding:10px; }
+
+div#Dialog { border:10px solid #CCC; padding:15px 20px 10px 20px; 
+  text-align:left; background:#FFF; }

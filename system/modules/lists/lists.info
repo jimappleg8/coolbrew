@@ -1,0 +1,9 @@
+$Id$
+
+id = lists
+name = Lists
+description = Implements generic lists that can be displayed as a whole or randomly.
+extends = sites
+base path = admin/lists.php
+default page = lists/index
+restricted = 1

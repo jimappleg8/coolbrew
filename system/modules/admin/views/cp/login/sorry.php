@@ -1,0 +1,1 @@
+<body><div class="Container">	  <div id="Dialog"><p>Sorry, but you don't have access to the requested page.</p><p><a href="<?=site_url('cp/sites/index');?>">Admin home page</a> <span class="pipe">|</span> <a href="<?=site_url('cp/login/logout');?>">Log-out</a></p></div></div></body>

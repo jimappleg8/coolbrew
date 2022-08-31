@@ -1,0 +1,80 @@
+Function Reference and Usage:
+
+$domain = "somedomain.com";
+
+
+Initialization:
+$dns = new BindNs(optional string domain);
+$dns->initialize(string $domain);
+
+bool BindNS(optional string $domain)			Initialization Function.
+returns false on error.
+
+bool initialize(string $domain)				Optional Function if BindNS called without $domain.
+return false on error.
+
+bool named(void)					Returns array of hosts.
+return false on error.
+
+bool activate(string $value);					Last function to call, adds/deletes domain,
+Usage: Add domain: activate();					removes/adds entry in named.conf
+Usage: Delete domain: activate("delete");
+
+bool addMX(int $priority,string $domain);
+
+Effect:		IN	MX	10 mail.somewhere.com.
+do:	$dns->addMX(10,"mail.somewhere.com");
+return false on error.
+
+bool addA(string $IP);
+
+Effect:		IN	A	10.1.1.50
+do:	$dns->addA("10.1.1.50");
+Effect:	www	IN	A	10.1.1.51
+do:	$dns->addA("www:10.1.1.51");
+returns false on error.
+
+bool addNS(string $NS);
+Effect:		IN	NS	dns.somewhere.com.
+do:	$dns->addNS("dns.somewhere.com");
+returns false on error.
+
+bool addCNAME(string $CNAME);
+Effect:	www	IN	CNAME	somedomain.com.
+do:	$dns->addCNAME("www");
+returns false on error.
+
+bool autoSerial(void);					Automatically generates and inserts serial.
+Effect: "Serial generation in format: YYYYMMDDNNN  (Where Y=Year, M=Month, D=Day, N=Number)"
+do: $dns->autoSerial();
+returns false on error.
+
+bool incSerial(void);					Automaticall updates serial.
+Effect:	"Serial parsing and updating of NNN where N=Number";
+do: $dns->incSerial();
+returns false on error.
+
+bool delA(string $IP);					Deletes all occurance of $IP
+Effect:	Removal of:	IN	A	10.1.1.50
+do:	$dns->delA("10.1.1.50");
+Effect:	Removal of:	www	IN	A	10.1.1.51
+do:	$dns->delA("www:10.1.1.51");
+returns false on error.
+
+string getDomain(void);					Returns domain name.  Same as $dns->DOMAIN;
+returns false on error.
+
+string getNameserver(void);				Returns Nameserver entry in domain db.
+Effect: domain	IN      SOA     ns1.somewhere.com. hostmaster.somewhere.com. (
+Returns:			----------------
+Returns: "ns1.somewhere.com"
+
+string getContact(void);                             Returns Contact entry in domain db.
+Effect: domain	IN      SOA     ns1.somewhere.com. hostmaster.somewhere.com. (
+Returns:                        		   ________________________
+Returns: "hostmaster.somewhere.com"
+
+string getSerial(void);                             Returns Nameserver entry in domain db.
+Effect:	20000919001 10800 3600 604800 3600 )
+Returns:__________
+Returns: "20000919001"

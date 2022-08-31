@@ -1,0 +1,45 @@
+
+/* Admin-specific styles */
+
+/*-------------------------------------------------
+  HOME PAGE
+-------------------------------------------------*/
+
+body#sites .Right div.brand h1 { background-color:transparent;
+  border-bottom:0px; margin:9px 0 3px 0; padding:0 0 0 8px; color:#000;
+  font-size:12px; }
+body#sites .Right div.site a { border-bottom:medium none; display:block; 
+  font-size:12px; font-weight:normal; margin:1px 0; padding:1px 1px 1px 16px; }
+body#sites .listing div.site { border-top:1px solid #D0D0D0; margin:0; 
+  padding:3px 6px; clear:both; }
+body#sites .domain {  }
+body#sites .domain a { color:#000; background:#FFF;
+  font-size:13px; text-decoration:none; }
+body#sites .domain a:hover { color:#000; text-decoration:underline; 
+  font-size:13px; }
+body#sites .description { font-size:11px; color:#666; padding-left:12px; }
+body#sites .notes { float:right; font-size:11px; padding-top:2px;
+  background:#FFF; }
+
+
+/*-------------------------------------------------
+  DOMAINS HOME PAGE
+-------------------------------------------------*/
+
+body#domains .listing div.brand h1 { background-color:transparent;
+  border-bottom:0px; margin:9px 0 3px 0; padding:2px 0 2px 8px; color:#000;
+  font-size:12px; background-color:#EDF3FE; border-bottom:1px solid #DCDCDC; 
+  text-decoration:none; }
+body#domains .listing div.brand h1 a { color:#000; text-decoration:none; }
+body#domains .listing div.brand h1 a:hover { background-color:transparent;
+  text-decoration:underline; }
+body#domains .listing div.brand h1 span { font-weight:normal; 
+  font-size:11px; }
+body#domains .listing div.brand div.domain { font-size:12px; 
+  display:block; margin:1px 0; padding:1px 1px 1px 16px;}
+body#domains .listing div.brand div.domain a { border-bottom:medium none;
+  font-weight:normal; color:#000; text-decoration:none; padding:1px 4px; }
+body#domains .listing div.brand div.domain a:hover { color:#FFF; 
+  padding:1px 4px; }
+
+

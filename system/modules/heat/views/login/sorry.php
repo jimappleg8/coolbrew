@@ -1,0 +1,1 @@
+<?php $base = "/admin.php"; ?><body><div class="Container">	  <div id="Dialog"><p>Sorry, but you don't have access to the requested page.</p><p><a href="<?=$base;?>/admin/index">Admin home page</a> <span class="pipe">|</span> <a href="<?=$base;?>/login/logout">Log-out</a></p></div></div></body>

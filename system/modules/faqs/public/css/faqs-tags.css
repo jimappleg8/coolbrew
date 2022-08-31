@@ -1,0 +1,20 @@
+
+/* Faq-specific styles */
+
+/* ------------------------------------------------------------------
+    FAQs Search
+   ------------------------------------------------------------------ */
+
+.faq-search form select { width:200px; }
+.faq-search form input[type=button] { color:#FFF; background-color:#000;
+  height:20px; font-family:arial; font-size:12px; margin-left:9px; }
+
+#popular-searches { font-size:0.8em; margin-top:9px;
+  font-family:Trebuchet, Verdana, Arial, Helvetica, sans-serif; }
+#popular-searches h3 { display:inline; margin:0 3px 0 0; padding:0;
+  font-size:12px; }
+#popular-searches ul { display:inline; margin:12px 0 0 0; padding:0; }
+#popular-searches li { display:inline; border-left:1px solid #666; }
+#popular-searches li a { color:#666; padding:1px 3px 1px 7px;
+  background-color:#FFF; }
+#popular-searches li a:hover { color:#000; text-decoration:underline; }

@@ -1,0 +1,7 @@
+
+/* Plugs-specific styles */
+
+#basic-form td { vertical-align:top; text-align:left; }
+#basic-form td.fieldname { text-align:right; }
+
+#basic-form .asterisk { font-size:80%; color:#F00; }

@@ -1,0 +1,9 @@
+$Id$
+
+id = jobs
+name = Careers
+description = Application for managing job openings and applications.
+extends = sites
+base path = admin/careers.php
+default page = jobs/index
+restricted = 1

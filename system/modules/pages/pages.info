@@ -1,0 +1,9 @@
+$Id$
+
+id = pages
+name = Pages
+description = Implements page information for menu and meta data management.
+extends = sites
+base path = admin/pages.php
+default page = pages/index
+restricted = 1

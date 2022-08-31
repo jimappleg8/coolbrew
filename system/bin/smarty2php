@@ -1,0 +1,78 @@
+#!/usr/local/bin/php
+<?php
+
+// -----------------------------------------------------------------------
+// Script to simplify the conversion of Smarty template files to PHP 
+// templates as used by CoolBrew.
+// -----------------------------------------------------------------------
+//
+// In general, we keep the old code as a comment within the new code so
+// we can double-check that the conversion went smoothly. For instance,
+//
+//   {$var}  is converted to  $var;//@@{$var}
+//
+// These codes are deleted at the end of the conversion unless the -d 
+// flag is used.
+//
+// -----------------------------------------------------------------------
+
+$verbose = 0;
+$debug = 0;
+
+// get the arguments passed to the script
+
+if ($_SERVER['argc'] < 2)
+{
+   usage();
+}
+
+for ($i=1; $i<$_SERVER['argc']; $i++)
+{
+   switch ($_SERVER['argv'][$i])
+   {
+      case '-d':
+         $debug = 1;
+         break;
+      case '-v':
+         $verbose = 1;
+         break;
+      default:
+         $smarty_file = $_SERVER['argv'][$i];
+         break;
+   }
+}
+
+if ($smarty_file == '')
+{
+   usage();
+}
+
+echo "Verbose = ".$verbose."\n";
+echo "smarty_file = ".$smarty_file."\n\n";
+
+// read in the specified file
+
+
+// look for any {literal} tags and split the file accordingly
+
+
+// run each section of the file through the list of search and replace calls
+
+
+// delete the original codes if debug is off
+if ( ! $debug)
+{
+
+}
+
+// rejoin the file segments
+
+// save the template with a .php extension
+
+
+function usage()
+{
+   die("Usage: smarty2php [-v] /path/to/smarty-template.tpl\n\n");
+}
+
+?>

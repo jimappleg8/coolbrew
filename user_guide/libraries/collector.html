@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Collector Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Collector Class</h1>
+
+<p>The Collector class contains functions that permit you to collect and consolidate both JavaScript and Cascading Style Sheets (CSS).</p>
+
+<p>With CoolBrew, we may want to load several tags on a single web page, and each of those tags may have CSS or JavaScript that it needs to display properly. So how do we manage that kind of data from multiple tags? If a tag you are writing needs CSS or JavaScript components, you can use this class to add that data to a central collection. That collection can then be inserted into the page all at once.</p>
+
+<p class="important"><strong>Note:</strong> This class is initialized automatically by the system so there is no need to do it manually.</p>
+
+<h2>Providing a Return Option</h2>
+
+<p>When you write a tag that adds code to the collections, you'll find that you need to design the tag to return its output rather than display it to the screen. At the very least, you'll need to add an option to return the output this way.</p>
+
+<p>The reason for this will become obvious as soon as you try to use the tag: you'll need to run the tag at the top of your page so the JavaScript and/or CSS collections are complete before you finish the &lt;HEAD&gt; section of your document, but you'll need the tag results to display in the &lt;BODY&gt; section. You can see an example of this in the <a href="../modules/collect.html">Collector Module</a> section of this guide.</p>
+
+<p class="important"><strong>Note:</strong> For more information about the how collections can be accessed and used inside your website document files, see the <a href="../modules/collect.html">Collector Module</a> section in this manual.</p>
+
+<p>If you are using the CodeIgniter <dfn>$this->load->view()</dfn> function to load a view file in your tag, returning the data is a simple process:
+
+<code>
+&lt;?php
+<br />
+<br />// the bulk of your tag here.
+<br />
+<br />$results = $this->load->view('whirligig', $data, TRUE);
+<br />
+<br />return $results;
+<br />
+<br />?&gt;
+</code>
+
+<p>For more information about the <dfn>$this->load->view()</dfn> function, see the <a href="http://www.codeigniter.com/user_guide/libraries/loader.html">Loader Class</a> page in the <i>CodeIgniter User Guide</i>.</p>
+
+
+<h2>Adding Code from a File</h2>
+
+<p>You can save your JavaScript and CSS code in files inside your module folder and then add them to your collections using these functions:</p>
+
+<code>
+$this->collector->append_js_file('<var>file</var>');
+<br />$this->collector->append_css_file('<var>file</var>');
+</code>
+
+<p>These functions add the contents of <var>file</var> to the JavaScript and CSS collections respectively, where <var>file</var> is the filename without the .js or .css extension.</p>
+
+<p>The advantage of using files to store your code instead of defining the code directly in your controller is that the CSS or JavaScript can be overridden at the document level. This is especially helpful with CSS which might need to be changed significantly for each website to match a particular design. CoolBrew will look for the requested file in three different folders and use the first one it finds. In the case of the JavaScript function:</p>
+
+<ol>
+<li><dfn>DOCPATH/js/</dfn></li>
+<li><dfn>system/js/</dfn></li>
+<li><dfn>system/MODULE_NAME/js/</dfn></li>
+</ol>
+
+<p>And the for the CSS function:</p>
+
+<ol>
+<li><dfn>DOCPATH/css/</dfn></li>
+<li><dfn>system/css/</dfn></li>
+<li><dfn>system/MODULE_NAME/css/</dfn></li>
+</ol>
+
+<p class="important"><strong>Note: </strong> Generally, JavaScript or CSS code intended to be added to the collections does not include the HTML &lt;SCRIPT&gt; or &lt;STYLE&gt; tags that are used to place the code in an HTML document. This keeps the code flexible as to how it gets inserted.</p>
+
+
+<h2>Adding Code Directly</h2>
+
+<p>You can also add CSS and JavaScript code directly from your controller using these functions:</p>
+
+<code>
+$this->collector->append_js_code('<var>code</var>');
+<br />$this->collector->append_css_code('<var>code</var>');
+</code>
+
+
+<h2>Getting the Collected Data</h2>
+
+<p>Once all the JavaScript and CSS code is collected, you can get the collected data in a form that is ready to be inserted into an HTML document or view file using these functions:</p>
+
+<code>
+$this->collector->wrap_js('<var>wrapper</var>');
+<br />$this->collector->wrap_css('<var>media</var>', '<var>wrapper</var>');
+</code>
+
+<p>These functions return the JavaScript or CSS collections wrapped in HTML &lt;SCRIPT&gt; or &lt;STYLE&gt; tags respectively.</p>
+
+<p>The default wrapper templates are <dfn>system/js/wrapper.js</dfn> and <dfn>system/css/wrapper.js</dfn>. These templates can be edited directly or overridden by placing copies of them in <dfn>DOCPATH/js/</dfn> and <dfn>DOCPATH/css/</dfn> and editing those copies. You can also specify a whole different template file in the function call, where <var>wrapper</var> is the template filename without the .js or .css extension.</p>
+
+<p>The wrapper templates are not standard view files. They are simple files with one or two template variables that get replaced with the collection contents. The JavaScript template has the <var>{javascript}</var> variable, and the CSS template has the <var>{CSS}</var> and <var>{media}</var> variables.</p>
+
+
+
+<h2>Other Utilities</h2>
+
+<h3>$this->collector->get_js_file('<var>file</var>');</h3>
+
+<p>Returns the contents of the javascript <var>file</var>.</p>
+
+<h3>$this->collector->get_js();</h3>
+
+<p>Returns the JavaScript collection without wrapping it first.</p>
+
+<h3>$this->collector->get_css();</h3>
+
+<p>Returns the CSS collection without wrapping it first.</p>
+
+
+
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Database Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Database Class</h1>
+
+<p class="important"><strong>Note:</strong> This page is an extension of the <i>CodeIgniter User Guide</i> page of the same name. Please read the CodeIgniter <a href="http://www.codeigniter.com/user_guide/database/index.html">Database Class</a> section in addition to this page for complete information about this feature.</p>
+
+<h2>System and Document-Level Config Files</h2>
+
+<p>In CodeIgniter, the database config file is stored in the <kbd>application</kbd> folder. Since CoolBrew is designed to use multiple modules, and it can be assumed that most of those modules will use the same database configuration, the primary database config file is now  <dfn>system/config/database.php</dfn>. This file is now required if you want to use the built-in database class.</p>
+
+<p>The database config file can now be augmented at the module and document levels, much like the other config files. CoolBrew looks for <dfn>database.php</dfn> files in each of three folders and merges the data it finds:</p>
+
+<ol>
+<li><dfn>DOCPATH/config/</dfn></li>
+<li><dfn>system/MODULE_NAME/config/</dfn></li>
+<li><dfn>system/config/</dfn></li>
+</ol>
+
+<p>The locations are shown in priority order. In other words, the contents of the first location will take priority over the others, and the contents of the second location will take priority over the third.</p>
+
+<p>See the <a href="../libraries/config.html">Config Class</a> page in this guide for more information about how this works.</p>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

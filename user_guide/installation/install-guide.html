@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Installation Guide
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Installation Guide</h1>
+
+<p>CoolBrew is relatively easy to install. For those of you who are familiar with this sort of thing, the QuickStart Guide below is a good place to begin. For those who need more detail, the rest of the guide provides that.</p>
+
+<h2>QuickStart Guide</h2>
+
+<ol>
+
+<li>Download and unzip the CoolBrew package.</li>
+
+<li>Upload the CoolBrew <dfn>system</dfn> folder to your server. Ideally, it should be uploaded to a location outside of any of your websites' document root folders. If you have to upload it into a document root folder, you can do that as long as you set up the <dfn>system/</dfn><kbd>coolbrew.inc.php</kbd> file correctly. <a href="#rename_system" class="more">[more details]</a></li>
+
+<li>Open the <dfn>system/</dfn><kbd>coolbrew.inc.php</kbd> file with a text editor and enter your configuration information. <a href="#coolbrew_inc" class="more">[more details]</a></li>
+
+<li>If you intend to use a database, open the <dfn>system/config/</dfn><kbd>database.php</kbd> file with a text editor and set your database settings. this is a system-wide config file and it can be overridden by module-level and document-level config files as needed. For more information about configuring this file, see the <a href="http://www.codeigniter.com/user_guide/database/configuration.html">Database Configuration</a> section of the <i>CodeIgniter User Guide</i>.</li>
+
+<li>Edit the <var>include_path</var> directive in your <kbd>php.ini</kbd> file to include the system folder <a href="#include_path" class="more">[more details]</a>, or use an .htaccess file in each of your websites to add the directory to the path. <a href="#htaccess" class="more">[more details]</a></li>
+
+<li>Connect your web pages to CoolBrew by including the <kbd>coolbrew.inc.php</kbd> file at the top of the page. For more information, see the <a href="../general/getting-started.html">Getting Started</a> section of this guide.
+
+<li>For information about installing modules, see the user guide for each module.</li>
+
+</ol>
+
+<a name="rename_system"></a>
+<h2>Placing the System Folder in a Document Root</h2>
+
+<p>If you put the system folder in one of your document root folders, you will need to tell CoolBrew where to find it. Open the <dfn>system/</dfn><kbd>coolbrew.inc.php</kbd> file and change the <var>$system_dir</var> variable:
+
+<code>
+$system_dir = $server_doc_dir . "/<samp>doc-root</samp>/system";
+</code>
+
+<p>Where <samp>doc-root</samp> is the document root folder in which you placed the <dfn>system</dfn> folder.</p>
+
+
+<a name="coolbrew_inc"></a>
+<h2>Editing the CoolBrew Include File</h2>
+
+<p>The CoolBrew include file is the <dfn>system/</dfn><kbd>coolbrew.inc.php</kbd> file. This is the file that you include at the top of each of your website files to connect your website to the CoolBrew system.
+
+<h3>The <var>$sites</var> Array</h3>
+
+<p>The trickiest part about setting up this file is setting the <var>$sites</var> array. You must set up an entry in this array for each of the domains that you will be using to access your websites:</p>
+
+<code>
+$sites = array (
+<br />&nbsp; &nbsp;'<var>yourdomain1.com</var>' => array(
+<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'<var>siteid</var>',&nbsp; &nbsp; &nbsp;// the site ID
+<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'<var>root-dir</var>', // the document root dir name
+<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'<var>server-level</var>',&nbsp; &nbsp; // the server level dev|stage|live
+<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'<var>locale</var>'&nbsp; &nbsp; // the default locale
+<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ),
+<br />);
+</code>
+
+<p>In this sample, <var>yourdomain1.com</var> is the domain name. Notice that the "www" is not part of the domain name. If your website will accept URLs without the "www" (e.g. http://domain.com  as well as http://www.domain.com), leaving the "www" off your definition here will ensure that both URL forms will be recognized.</p>
+
+<p>The <var>siteid</var> is a string of characters that you will use to identify the website in database records and a few other places. It's a good idea to choose an ID that is easy to remember. For example, the ID that I use for the CoolBrew website is 'cb'.</p>
+
+<p>The <var>root-dir</var> is the document root directory for the site the domain points to.</p>
+
+<p>The <var>server-level</var> indicates what kind of site it is. The recommended choices are <kbd>dev</kbd> for a development site, <kbd>stage</kbd> for a staging site, and <kbd>live</kbd> for a live site. These codes are arbitrary, however, and you can use whatever makes sense for your setup. This code will be assigned to the SERVER_LEVEL constant which you can use to set up, for example, different database connection information based on what kind of site it is.</p>
+
+<p>The <var>locale</var> setting will automatically set the 'language' config variable for each of your sites in the <dfn>system/config/</dfn><kbd>config.php</kbd> file. In CodeIgniter, this is in the form of the language name such as '<kbd>english</kbd>'. In CoolBrew, I recommend using a combination of a <a href="http://www.loc.gov/standards/iso639-2/langcodes.html">language code</a> and a <a href="http://www.iso.org/iso/en/prods-services/iso3166ma/02iso-3166-code-lists/list-en1.html">country code</a> known as a locale. For example, in the United States, the default locale will usually be '<kbd>en_US</kbd>'. You can use whatever you like as long as it matches the folder names you use inside your <dfn>language</dfn> folders.</p>
+
+<h3>The <var>$server_doc_dir</var> Variable</h3>
+
+<p>This variable is the full path to all your document root directories. CoolBrew assumes you have all your websites' document root folders in a single folder. If this is not the case, you will need to specify the full path to each folder in the <var>$sites</var> array and set the <var>$server_doc_dir</var> variable to an empty string:</p>
+
+<code>
+$sites = array (
+<br />&nbsp; &nbsp;'<var>yourdomain1.com</var>' => array('<var>siteid</var>', '<var>/full/path/to/root-dir</var>', '<var>server-level</var>', '<var>locale</var>'),
+<br />);
+<br />
+<br />$server_doc_dir = '';
+</code>
+
+<p>You can have document root folders anywhere on your file system, even on different servers if the volumes for that server are mounted on the one running CoolBrew. They must be available through the same file system, though; they cannot be accessed through TCP for example.</p>
+
+<a name="include_path"></a>
+<h2>Editing the <var>include_path</var> Directive with PHP.INI</h2>
+
+<p>CoolBrew is activated in each of your web pages by including the <kbd>coolbrew.inc.php</kbd> file at the start of the page. Once that file is included, your page has access to any of the tags supplied by CoolBrew.</p>
+
+<p>To make sure PHP can find the <kbd>coolbrew.inc.php</kbd> file, we add the <dfn>system</dfn> path to the PHP configuration file, <kbd>php.ini</kbd>. To do this, you must have access to your servers <kbd>php.ini</kbd> file. Find the file and open it in a text editor. Look for the <var>include_path</var> directive which will look something like this:</p>
+
+<code>
+include_path = ".:/php/includes:/usr/local/lib/php"
+</code>
+
+<p>There are slightly different path directives for Unix-like servers and Windows servers, so make sure you use the correct one. In my example, I'm using the Unix path. Just add the path to your system folder:</p>
+
+<code>
+include_path = ".:/php/includes:/usr/local/lib/php<b>:/path/to/your/system</b>"
+</code>
+
+<p>Save the file and restart your web server to make it take effect. This is the only time you will need to mess with this unless you change the location of this folder.</p>
+
+<a name="htaccess"></a>
+<h2>Editing the <var>include_path</var> Directive with .htaccess</h2>
+
+<p>If you don't have access to your <kbd>php.ini</kbd> file, you can use an <kbd>.htaccess</kbd> file to make the required change to the <var>include_path</var> directive. Create an .htaccess file with this line:</p>
+
+<code>
+php_value include_path "<samp>.:/usr/local/lib/php:/path/to/your/system</samp>"
+</code>
+
+<p>Be sure to change the path to the appropriate settings for your system.</p>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

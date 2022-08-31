@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Differences from CodeIgniter
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Differences from CodeIgniter</h1>
+
+<p>For those of you who are familiar with CodeIgniter, this is to highlight what is different about CoolBrew.</p>
+
+<p>CoolBrew is conceptually different in terms of how it is used.</p>
+
+<table width="100%" cellpadding="0" cellspacing="1" border="0" class="">
+<tr>
+<th>With CodeIgniter...</th>
+<th>With CoolBrew...</th>
+</tr>
+<tr>
+<td class="td">You create multi-page applications.</td>
+<td class="td">You create modules containing "tags".</td>
+</tr>
+<tr>
+<td class="td">A controller class represents a section of your application and each method is a page.</td>
+<td class="td">A controller class represents a collection of related tags, and each method is the tag itself. Tags can be multi-page applications, whole pages, or parts of pages.</td>
+</tr>
+<tr>
+<td class="td">You access an application through it's associated index.php file. If you want to access a different application, you need a different index.php file.</td>
+<td class="td">The tag system can access any tag in any module. The more modules you install in the system, the more tags are available to all your websites.</td>
+</tr>
+<tr>
+<td class="td">Each application is self-contained with its own set of config files.</td>
+<td class="td">Each module is self-contained to a point, but there are system-wide config files that all the modules use and each module can override as needed.</td>
+</tr>
+<tr>
+<td class="td">If you need to add functionality, you do it within the application folder so it doesn't affect the other applications.</td>
+<td class="td">If you want to add functionality, you may find that you need to do it at the system level so that all the modules can share the resources.</td>
+</tr>
+</table
+
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

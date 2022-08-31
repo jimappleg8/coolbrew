@@ -1,0 +1,98 @@
+// Deployment script for Coolbrew system files and database
+// Author: Jim Applegate
+//
+pipeline {
+    agent any
+
+    parameters {
+        choice(choices: "Dev\nStaging\nProduction", description: "Choose which environment to push changes to.", name: "DEPLOY_TO")
+		choice choices: "No\nYes", description: "Choose whether to deploy the database as well.", name: "DEPLOY_DB"
+	}
+
+	environment {
+		DEPLOY_TO = "${params.DEPLOY_TO}"
+		DEPLOY_DB = "${params.DEPLOY_DB}"
+	}
+
+    stages {
+        stage("deploy-db-dev") {
+            when {
+                allOf { 
+                	environment ignoreCase: true, name: "DEPLOY_TO", value: "dev"; 
+                	environment ignoreCase: true, name: "DEPLOY_DB", value: "yes"; 
+                }
+            }
+            steps {
+                // this stage only required until move is complete
+                // copy full dev database from bolwebdev1
+                sh "cd ${WORKSPACE}"
+                // pull a backup of the dev database on bolwebdev1 (includes all tables)
+                sh "mysqldump -h bolwebdev1 -u root --password=tr33Cr0w coolbrew -Q -K -c -e --default-character-set=utf8 > coolbrew_olddev.sql"
+                // upload the dev database from bolwebdev1 to the dev database on bolwebdev2
+                sh "mysql -h bolwebdev2 -u brewuser --password=fr33tyr8 coolbrew_dev < ${WORKSPACE}/coolbrew_olddev.sql"
+            }
+        }
+        stage("deploy-dev") {
+        	when {
+        		environment ignoreCase: true, name: "DEPLOY_TO", value: "dev"
+        	}
+            steps {
+				// copy files to bolwebdev2
+				sh "cd ${WORKSPACE}"
+				sh "sudo chown jenkins:jenkins *"
+				// create the directory only if it doesn't already exist
+				sh "ssh webadmin@bolwebdev2 \"sudo mkdir -p /var/opt/httpd/system/\""
+				// prepare the dev server to receive files by changing the owner
+				sh "ssh webadmin@bolwebdev2 \"sudo chown -R webadmin:webadmin /var/opt/httpd/system/\""
+				// copy files from control server to dev
+				sh "rsync -rav -e ssh --delete ${WORKSPACE}/system/ webadmin@bolwebdev2:/var/opt/httpd/system/"
+				// fix the owner/permissions on the dev server
+				sh "ssh webadmin@bolwebdev2 \"sudo chown -R apache:apache /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebdev2 \"sudo chmod -R g+w /var/opt/httpd/system/\""
+            }
+        }
+        stage("deploy-staging") {
+        	when {
+        		environment ignoreCase: true, name: "DEPLOY_TO", value: "staging"
+        	}
+            steps {
+				// copy files to bolwebstage1
+				sh "cd ${WORKSPACE}"
+				sh "sudo chown jenkins:jenkins *"
+				// create the directory only if it doesn't already exist
+				sh "ssh webadmin@bolwebstage1 \"sudo mkdir -p /var/opt/httpd/system/\""
+				// prepare the staging server to receive files by changing the owner
+				sh "ssh webadmin@bolwebstage1 \"sudo chown -R webadmin:webadmin /var/opt/httpd/system/\""
+				// copy files from control server to staging
+				sh "rsync -rav -e ssh --delete ${WORKSPACE}/system/ webadmin@bolwebstage1:/var/opt/httpd/system/"
+				// fix the owner/permissions on the staging server
+				sh "ssh webadmin@bolwebstage1 \"sudo chown -R apache:apache /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebstage1 \"sudo chmod -R g+w /var/opt/httpd/system/\""
+            }
+        }
+        stage("deploy-production") {
+        	when {
+        		environment ignoreCase: true, name: "DEPLOY_TO", value: "production"
+        	}
+            steps {
+				// copy files to bolwebserv3 and 4
+				sh "cd ${WORKSPACE}"
+				sh "sudo chown jenkins:jenkins *"
+				// create the directories only if they don't already exist
+				sh "ssh webadmin@bolwebserv3 \"sudo mkdir -p /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebserv4 \"sudo mkdir -p /var/opt/httpd/system/\""
+				// prepare the production servers to receive files by changing the owner
+				sh "ssh webadmin@bolwebserv3 \"sudo chown -R webadmin:webadmin /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebserv4 \"sudo chown -R webadmin:webadmin /var/opt/httpd/system/\""
+				// copy files from control server to production
+				sh "rsync -rav -e ssh --delete ${WORKSPACE}/system/ webadmin@bolwebserv3:/var/opt/httpd/system/"
+				sh "rsync -rav -e ssh --delete ${WORKSPACE}/system/ webadmin@bolwebserv4:/var/opt/httpd/system/"
+				// fix the owner/permissions on the production servers
+				sh "ssh webadmin@bolwebserv3 \"sudo chown -R apache:apache /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebserv4 \"sudo chown -R apache:apache /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebserv3 \"sudo chmod -R g+w /var/opt/httpd/system/\""
+				sh "ssh webadmin@bolwebserv4 \"sudo chmod -R g+w /var/opt/httpd/system/\""
+            }
+        }
+    }
+}

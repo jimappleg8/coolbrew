@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; DB Session Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>DB Session Class</h1>
+
+<p><strong>Note: In CoolBrew, this class has replaced the built-in CodeIgniter Sessions Class.</strong></p>
+
+<p>The CodeIgniter sessions class stores all session data in a cookie and optionally stores the session ID in a database. That means if you were to store sensitive information in the session, that data would be stored on the user's computer which is rather insecure. Storing the data in the cookie also limits the amount of data you can store to 4KB.</p>
+
+<p>DB Session stores only the session ID in the cookie and moves all the other data to the database table for added security. In addition, it supports <a href="#flash_data">Flash Data</a>.</p>
+
+<p class="important">DB Session is designed to work simlarly to the CI_Session Class, so please see the <a href="http://www.codeigniter.com/user_guide/libraries/sessions.html">Session Class</a> section of the <i>CodeIgniter User Guide</i> for more information.</p>
+
+
+<h2>Creating the Database Table</h2>
+
+<p>DB Session requires that a database table be set up before it can be used. Here is the basic prototype (for MySQL) required by the DB Session class:</p>
+
+<textarea class="textarea" style="width:100%" cols="50" rows="8">
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+session_id varchar(40) DEFAULT '0' NOT NULL,
+ip_address varchar(16) DEFAULT '0' NOT NULL,
+user_agent varchar(50) NOT NULL,
+last_activity int(10) unsigned DEFAULT 0 NOT NULL,
+session_data text default '' not null,
+PRIMARY KEY (session_id)
+);</textarea>
+
+<p><strong>Note:</strong> By default the table is called <dfn>ci_sessions</dfn>, but you can name it anything you want as long as you update the <kbd>system/config/config.php</kbd> file so that it contains the name you have chosen. Once you have created your database table you must enable the database option in your config.php file as follows:</p>
+
+<code>$config['sess_use_database'] = TRUE;</code>
+
+<p>Make sure you've specified the table name in your config file as well:</p>
+
+<code>$config['sess_table_name'] = 'ci_sessions";</code>
+
+<p class="important"><strong>Note:</strong> If you do not set the above variables as shown, DB Session will not work.</p>
+
+<p>For a complete listing of config preferences related to sessions, please see the <a href="http://www.codeigniter.com/user_guide/libraries/sessions.html">Session Class</a> section of the <i>CodeIgniter User Guide</i>.</p>
+
+
+<h2>Initializing a Session</h2>
+
+<p>Sessions will typically run globally with each page load, so the session class must either be initialized in your controller constructors, or it can be auto-loaded by the system. For the most part the session class will run unattended in the background, so simply initializing the class will cause it to read, create, and update sessions.</p>
+
+<p>To initialize the Session class manually in your controller constructor, use the <dfn>$this->load->library</dfn> function:</p>
+
+<code>
+$this->load->library('session');
+</code>
+
+<p>To ensure that the session class is available across multiple tags, you can load it by default in the system-level autoload config file along with the database library:</p>
+
+<code>
+$autoload['libraries'] = array('database','session');
+</code>
+
+<p>Once loaded, the Sessions library object will be available using: <dfn>$this->session</dfn></p>
+
+
+<h2>Retrieving Session Data</h2>
+
+<p>Any piece of information from the session array is available using the following function:</p>
+
+<code>$this->session->userdata('<samp>item</samp>');</code>
+
+<p>Where <samp>item</samp> is the array index corresponding to the item you wish to fetch. For example, to fetch the session ID you will do this:</p>
+
+<code>$session_id = $this->session->userdata('<samp>session_id</samp>');</code>
+
+<p><strong>Note:</strong> The function returns FALSE (boolean) if the item you are trying to access does not exist.</p>
+
+
+<h2>Adding Session Data</h2>
+
+<p>To add data to the session array, you use the <kbd>set_userdata()</kbd> method:</p>
+
+<code>
+$this->session->set_userdata('<samp>username</samp>', '<samp>johndoe</samp>');
+<br />$this->session->set_userdata('<samp>email</samp>', '<samp>johndoe@some-site.com</samp>');
+<br />$this->session->set_userdata('<samp>logged_in</samp>', <samp>TRUE<samp>);
+</code>
+
+<p>Or alternatively, you can send the data in an array:</p>
+
+<code>
+$this->session->set_userdata(array('<samp>username</samp>' => '<samp>johndoe</samp>', '<samp>email</samp>' => '<samp>johndoe@some-site.com</samp>', '<samp>logged_in</samp>' => <samp>TRUE</samp>));
+</code>
+
+
+<h2>Deleting Session Data</h2>
+
+<p>To remove data from the session array, you use the <kbd>unset_userdata()</kbd> method:</p>
+
+<code>
+$this->session->unset_userdata('<samp>username</samp>');
+</code>
+
+<a name="flash_data"></a>
+<h2>Using Flash Data</h2>
+
+<p>Flash data is session data that stays in the session only for the next request and then is automatically deleted. This is handy, for instance, when accessing a page that requires a login. You can save the return URL as flash data, redirect to your login page, and upon successful login, return to the original page.</p>
+
+<p>For example, at the top of any page that requires a login (or in the constructor of the controller if the whole thing requires login), you could have:</p>
+
+<code>
+$this->session->set_flashdata('<samp>return_url</samp>', $this->uri->current_uri());
+<br />redirect('<samp>user/login</samp>');
+</code>
+
+<p>If you have a login error, you can maintain the flash data using keep_flashdata().</p>
+
+<code>
+if (<var>$login_successful</var>) {
+<br />&nbsp; &nbsp;if (<var>$url</var> = $this->session->flashdata('<samp>return_url</samp>') ) {
+<br />&nbsp; &nbsp;&nbsp; &nbsp;redirect(<var>$url</var>);
+<br />&nbsp; &nbsp;} else {  
+<br />&nbsp; &nbsp;&nbsp; &nbsp;redirect('');
+<br />&nbsp; &nbsp;}
+<br />} else {
+<br />&nbsp; &nbsp;$this->session->keep_flashdata('<samp>return_url</samp>');
+<br />}
+</code>
+
+<p>There are three methods available to work with flash data:</p>
+
+<h3>$this->session->set_flashdata( '<samp>item</samp>', '<samp>value</samp>' )</h3>
+
+<p>Sets the flash item and is similar to <strong>$this->session-><kbd>set_userdata()</kbd></strong> except that you can't supply an array.</p>
+
+<h3>$this->session->flashdata( '<samp>item</samp>' );</h3>
+
+<p>Retrieves the value of the given flash item and is similar to <strong>$this->session-><kbd>userdata()</kbd></strong>.</p>
+
+<h3>$this->session->keep_flashdata( '<samp>item</samp>' );</h3>
+
+<p>Makes the given flash item valid for one more request for instances where you need to maintain the item until an error is resolved, for instance.</p>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+
+/* Stores-specific styles */
+
+/*-------------------------------------------------
+  Stores List
+-------------------------------------------------*/
+
+body#stores .listing div.store { border-top:1px solid #D0D0D0; margin:0; 
+  padding:3px 6px; clear:both; }
+body#stores .store-name {  }
+body#stores .store-name a { color:#000; background:#FFF;
+  font-size:13px; text-decoration:none; }
+body#stores .store-name a:hover { color:#000; text-decoration:underline; 
+  font-size:13px; }
+body#stores .address { font-size:11px; color:#666; padding-left:12px; }
+
+
+/* ------------------------------------------------------------------
+    Maps
+   ------------------------------------------------------------------ */
+
+a.maplink:link, a.maplink:hover, a.maplink:active { color:red; }
+
+.mapdiv { height:500px; width:300px; margin:10px auto 0 auto;
+  border:1px solid #9A9A68; }
+.mapdiv .smalltext { font-family:Arial, Helvetica, Geneva, sans-serif; font-size:13px;
+  line-height:16px; color:#3f0400; }
+.mapdiv .headertext3 { margin:0px; padding:0px; color:#3f0400;
+  font-family:Arial, Helvetica, Geneva, sans-serif; font-size:16px; line-height:20px; }
+.mapdiv a { text-decoration:none; font-family:Arial, Helvetica, Geneva, sans-serif; 
+  font-size:13px; color:#00F; }
+.mapdiv a:hover { text-decoration:underline; }
+.mapdiv form div { font-size:12px; font-family: Arial, Geneva, sans-serif;
+  color:#000; }
+.mapdiv input[type="text"] { width:200px; margin-bottom:6px; } 
+.mapdiv input[type="submit"] { margin-bottom:12px; } 
+
+
+/*-------------------------------------------------
+   Utilities
+  -------------------------------------------------*/
+.utility h2 { margin-bottom:0; }
+.utility h2 a { color:#000; text-decoration:none; }
+.utility h2 a:hover { background-color:#FFF; text-decoration:underline; }
+.utility p { margin-top:3px; color:#666; padding-left:12px; }

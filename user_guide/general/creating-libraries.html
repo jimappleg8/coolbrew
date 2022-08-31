@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Creating Libraries
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Creating Libraries</h1>
+
+<p class="important"><strong>Note:</strong> This page is an extension of the <i>CodeIgniter User Guide</i> page on the same topic. Please read the <a href="http://www.codeigniter.com/user_guide/general/creating_libraries.html">Creating Libraries</a> page in addition to this page for complete information about this feature.</p>
+
+
+<h2>Init Files</h2>
+
+<p>In it's earlier versions, CodeIgniter used a small initialization file called an <kbd>init</kbd> file to instantiate a particular class. That feature was removed in CodeIgniter version 1.5.x which has caused difficulties with integrating some third-party classes such as ADODB. While the details of how to resolve this issue are worked out, we have decided to re-add the ability to use init files.</p>
+
+<p><strong>Note:</strong> A nod and a thank you go out to Greg MacLellan for <a href="http://www.codeigniter.com/forums/viewthread/2246/">this thread</a> in the CodeIgniter forum.</p>
+
+<p>An <kbd>init</kbd> file a small initialization file corresponding to one of your classes. The purpose of this file is to instantiate your class. Not every class you add to CoolBrew will need an init file, but in some cases, they are invaluable. CoolBrew will look for an init file when loading a library and use it if it finds it. If it does not find one, it will create one of its own automatically.</p>
+
+<p>If you need to use an init file, you will need to create a folder called <dfn>init</dfn> inside your module folder or inside the system folder, depending on where you want to install the library. The init file must be named identically to your class file name, adding the "init_" prefix.  For example, if your class is named <dfn>myclass.php</dfn> your init file will be named:</p>
+
+<code>
+init_myclass.php
+</code>
+
+<p>Within your init file you will place your initialization code.  Here's an example of such code, using an imaginary class named <kbd>Myclass</kbd>:</p>
+
+<code>
+&lt;?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<br />
+<br />if ( ! class_exists('<kbd>Myclass</kbd>'))
+<br />{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require_once(APPPATH.'libraries/<kbd>Myclass</kbd>'.EXT);
+<br />}
+<br />
+<br />$obj =& get_instance();
+<br />$obj-><kbd>myclass</kbd> = new <kbd>Myclass();</kbd>
+<br />$obj->ci_is_loaded[] = '<kbd>myclass</kbd>';
+<br />
+<br />?&gt;
+</code>
+
+<h2>Naming Conventions</h2>
+
+<ul>
+
+<li>All file names must be in lowercase:  myclass.php and init_myclass.php</li>
+<li>Class names must be capitalize:  class Myclass</li>
+</ul>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

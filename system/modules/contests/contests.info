@@ -1,0 +1,8 @@
+$Id$
+
+id = contests
+name = Contests
+extends = sites
+base path = admin/contests.php
+default page = contests/index
+restricted = 1

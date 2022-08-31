@@ -1,0 +1,6 @@
+Stability release 2.1.3 fixes a slew of minor bugs found in HTML Purifier,
+and also includes some internal code enhancements and refactorings.
+Notably, tests/multitest.php automates testing in multiple versions, 
+fatal AttrDef_URI_Email error fixed, blockquote contents are more lenient
+in HTML 4.01 Strict and fatal errors involving ID tags in img tags were
+fixed.

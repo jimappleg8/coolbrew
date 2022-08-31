@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Tag Class
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Tag Class</h1>
+
+<p>The Tag class contains functions that give you access to the parameters passed in tags. This class is designed to behave similarly to the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a>.</p>
+
+<p class="important"><strong>Note:</strong> This class is initialized automatically by the system so there is no need to do it manually.</p>
+
+
+<h2>Why a Tag Class?</h2>
+
+<p>You might expect tag parameters to be passed directly to the tag (controller) functions as parameters. In other words, you you might expect that this tag:</p>
+
+<code>
+&lt;?php get('core.view.load', 'header', $data, TRUE); ?&gt;
+</code>
+
+<p>would map to the controller function like this:</p>
+
+<code>
+<br />class View extends Controller {
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;function load($view, $vars, $return)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />}
+</code>
+
+<p>CodeIgniter, however, automatically passes URI segment values to controller functions as parameters, so CoolBrew had to take another approach. You must specifically retrieve the parameters using the Tag class:</p> 
+
+<code>
+class View extends Controller {
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;function load()
+<br />&nbsp;&nbsp;&nbsp;&nbsp;{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$view = $this->tag->param(1);
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$vars = $this->tag->param(2, array());
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$return = $this->tag->param(3, FALSE);
+<br />
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( ! $view)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show_error('core.view.load: the file to view was not specified.');
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+<br />&nbsp;&nbsp;&nbsp;&nbsp;}
+<br />}
+</code>
+
+<p>This way, you can still retrieve URI segments as function parameters in your CoolBrew tags. For more information, see <a href="http://www.codeigniter.com/user_guide/general/controllers.html#passinguri">Passing URI Segments to your Functions</a> in the <i>CodeIgniter User Guide</i>.</p>
+
+<h2>$this->tag->param(<var>n</var>)</h2>
+
+<p>Permits you to retrieve a specific tag parameter. Where <var>n</var> is the parameter number you wish to retrieve. Parameters are numbered from left to right. For example, if your tag is this:</p>
+
+<code>
+&lt;?php get('peanuts.snoopy', 'supper_dish', 'lila', 'round_headed_kid'); ?&gt;
+</code>
+
+<p>The parameter numbers would be this:</p>
+
+<ol>
+<li>supper_dish</li>
+<li>lila</li>
+<li>round_headed_kid</li>
+</ol>
+
+<p>By default the function returns FALSE (boolean) if the tag parameter does not exist. There is an optional second <dfn>$this->tag->param()</dfn> parameter that permits you to set your own default value if the tag parameter is missing. For example, this would tell the function to return the number zero in the event of failure:</p>
+
+<code>$product_id = $this->tag->param(3, 0);</code>
+
+<p>It helps avoid having to write code like this:</p>
+
+<code>if ($this->tag->param(3) === FALSE)
+<br />{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;$product_id = 0;
+<br />}
+<br />else
+<br />{
+<br />&nbsp;&nbsp;&nbsp;&nbsp;$product_id = $this->tag->param(3);
+<br />}
+<br />
+</code>
+
+
+<h2>$this->tag->param_array()</h2>
+
+<p>Returns an array containing the tag parameters.  For example:</p>
+
+<code>
+$params = $this->tag->param_array();<br />
+<br />
+foreach ($params as $parameter)<br />
+{<br />
+&nbsp;&nbsp;&nbsp;&nbsp;echo $parameter;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;echo '&lt;br />';<br />
+
+}</code>
+
+
+<h2>$this->tag->total_params()</h2>
+
+<p>Returns the total number of parameters.</p>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

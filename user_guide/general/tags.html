@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Tags
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Tags</h1>
+
+<h2>The get() Function</h2>
+
+<p>Tags are standard PHP calls to the <dfn>get()</dfn> function defined in the <dfn>coolbrew.inc.php</dfn> file that you include at the top of each of your website pages. CoolBrew's <dfn>get()</dfn> function acts as a gateway through which your website pages talk to the CoolBrew modules. A tag looks like this:</p>
+
+<code>
+&lt;?php get("core.view.load", 'view-file', $data); ?&gt;
+</code>
+
+<p>The first parameter is a combination of the module name, the controller name and the function name, so in this instance it's saying "I want to call the "load" function in the "view" controller of the "core" module. After that, any listed items (e.g. '<var>view-file</var>' and <var>$data</var>) are the parameters to be sent to the specified function.</p>
+
+<p class="important"><strong>Note:</strong> Tag parameters are not passed directly to the function specified in the tag since CodeIgniter is designed to send URI variables to controller functions. To access the the tag's parameters, use the <a href="../libraries/tag.html">Tag Class</a>.</p>
+
+<p>The three bits of information that the <dfn>get()</dfn> function needs to route your request are:</p>
+
+<ol>
+<li>the module name
+<li>the controller or class name
+<li>the method or function name
+</ol>
+
+<h2>Shortened Tags</h2>
+
+<p>You can shorten the tag a bit if you have a controller that is the same name as the module. Let's say, for instance, that you have a 'products' module with a controller also called 'products'. To access the "detail" function, you could write the tag like this:</p>
+
+<code>
+&lt;?php get("products.detail"); ?&gt;
+</code>
+
+<p>Which is equivalent to this tag:</p>
+
+<code>
+&lt;?php get("products.products.detail"); ?&gt;
+</code>
+
+
+<h2>Application Tags</h2>
+
+<p>If only one component is specified, CoolBrew assumes that you want to run an application, similar to how CodeIgniter works by default. As such, CoolBrew expects you to supply the controller and method as part of the URL. See the <a href="../general/emulating-ci.html">Emulating CodeIgniter</a> section in this guide for more information.</p>
+
+<code>
+&lt;?php get("products"); ?&gt;
+</code>
+
+<a name="mixing_tags"></a>
+<h2>Mixing Application and Regular Tags</h2>
+
+<p>If you want to mix application and regular tags on the same page -- to load header and footer templates, for example -- you need to tell CoolBrew so it can interpret the URI properly. Just include the following line below where you include the <dfn>coolbrew.inc.php</dfn> file:</p>
+
+<code>
+$COOLBREW['uri_is_complete'] = TRUE;
+</code>
+
+<p>This will tell CoolBrew to remove the first two segments of the URI before it routes the regular tags.</p>
+
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

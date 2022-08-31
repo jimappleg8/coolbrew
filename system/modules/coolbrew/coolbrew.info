@@ -1,0 +1,9 @@
+$Id$
+
+id = coolbrew
+name = CoolBrew
+description = Implements tools to make the creation of new modules simpler.
+extends = admin
+base path = 
+default page = 
+restricted = 1

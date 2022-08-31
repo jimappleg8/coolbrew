@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; URI Module
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>URI Module</h1>
+
+<p>This module gives you access to the URI class from your website documents. The URI Class provides functions that help you retrieve information from your URI strings. If you use URI routing, you can also retrieve information about the re-routed segments.</p>
+
+<p class="important">For more information about the methods accessed by these tags, please see the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a> section of the <i>CodeIgniter User Guide</i>.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>segment</kbd>', <var>n</var>, <var>$no_result</var>); <span class="tag">?&gt;</tag></h2>
+
+<p>Permits you to retrieve a specific segment, where <var>n</var> is the segment number you wish to retrieve. By default the function returns FALSE (boolean) if the segment does not exist. <var>$no_result</var> permits you to set your own default value if the segment is missing. For example, this would tell the function to return the number zero in the event of failure:
+
+<code>
+&lt;?php $product_id = get('core.uri.segment', 3, 0); ?&gt;
+</code>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>rsegment</kbd>', <var>n</var>, <var>$no_result</var>); <span class="tag">?&gt;</tag></h2>
+
+<p>This tag is identical to the previous one, except that it lets you retrieve a specific segment from your re-routed URI.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>slash_segment</kbd>', <var>n</var>, '<samp>where</samp>'); <span class="tag">?&gt;</tag></h2>
+
+<p>This tag is almost identical to <dfn>get(core.uri.segment)</dfn>, except it adds a trailing and/or leading slash based on the second parameter. Options for '<samp>where</samp>' are 'trailing', 'leading', and 'both'.</p>
+
+<code>
+&lt;?php get('core.uri.slash_segment', 3, 'both');
+<br />
+<br />// Produces: /segment/
+</code>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>slash_rsegment</kbd>', <var>n</var>, '<samp>where</samp>'); <span class="tag">?&gt;</tag></h2>
+
+<p>This tag is identical to the previous one, except that it lets you add slashes a specific segment from your re-routed URI.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>uri_to_assoc</kbd>', <var>n</var>, <var>$default</var>); <span class="tag">?&gt;</tag></h2>
+
+<p>Turns URI segments into an associative array of key/value pairs. See the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a> section of the <i>CodeIgniter User Guide</i> for details.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>ruri_to_assoc</kbd>', <var>n</var>, <var>$default</var>); <span class="tag">?&gt;</tag></h2>
+
+<p>This tag is identical to the previous one, except that it creates an associative array using your re-routed URI.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>assoc_to_uri</kbd>', <var>$array</var>); <span class="tag">?&gt;</tag></h2>
+
+<p>Takes an associative array as input and generates a URI string from it. The array keys will be included in the string. Example:</p>
+
+<code>
+$array = array('product' => 'shoes', 'size' => 'large', 'color' => 'red');
+<br />
+<br />$str = get('core.uri.assoc_to_uri', $array);
+<br />
+<br />// Produces: product/shoes/size/large/color/red 
+</code>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>uri_string</kbd>'); ?&gt;</h2>
+
+<p>Returns a string with the complete URI. See the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a> section of the <i>CodeIgniter User Guide</i> for details.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>ruri_string</kbd>'); ?&gt;</h2>
+
+<p>This tag is identical to the previous one, except that it returns your re-routed URI</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>total_segments</kbd>'); ?&gt;</h2>
+
+<p>Returns the total number of segments.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>total_rsegments</kbd>'); ?&gt;</h2>
+
+<p>his tag is identical to the previous one, except that it returns the total number of segments in your re-routed URI</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>segment_array</kbd>'); ?&gt;</h2>
+
+<p>Returns an array containing the URI segments. See the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a> section of the <i>CodeIgniter User Guide</i> for details.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.uri.</kbd><kbd>rsegment_array</kbd>'); ?&gt;</h2>
+
+<p>This tag is identical to the previous one, except that it returns the array of segments in your re-routed URI</p>
+
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

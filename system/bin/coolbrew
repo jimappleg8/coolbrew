@@ -1,0 +1,13 @@
+#!/usr/bin/php -q
+
+<?php
+
+// -----------------------------------------------------------------------
+// Script to autogenerate an empty module
+// -----------------------------------------------------------------------
+
+$COOLBREW['command_line_interface'] = TRUE;
+require_once 'coolbrew.inc.php';
+get('coolbrew.coolbrew.index');
+
+?>

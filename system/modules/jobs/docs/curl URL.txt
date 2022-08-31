@@ -1,0 +1,6 @@
+curl -H 'Accept: application/xml' -H 'Content-Type: application/xml' -u japplega:kl33nex -p -x proxy.ctea.com:3128 https://haincelestial.projectpath.com/project/list
+
+curl -H 'Accept: application/xml' -H 'Content-Type: application/xml' -u japplega:kl33nex -p -x proxy.ctea.com:3128 https://haincelestial.projectpath.com/time/report/0/0/0
+
+
+./configure --with-apxs2 --with-mysql=/usr --with-ldap --with-gd --with-zlib-dir --with-crack=/root/cracklib,2.7/ --enable-mbstring --with-curl

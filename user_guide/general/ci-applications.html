@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Using CodeIgniter Applications
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Using CodeIgniter Applications</h1>
+
+<p>CoolBrew Framework can run CodeIgniter applications with a minimum of fuss. To illustrate the process, let's install a fictional application called "Trimtab".</p>
+
+<p>When you download the Trimtab application file and unzip it, you get a directory structure like this:</p>
+
+<code>
+trimtab/
+<br />&nbsp; &nbsp;css/
+<br />&nbsp; &nbsp;index.php
+<br />&nbsp; &nbsp;js/
+<br />&nbsp; &nbsp;system/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;application/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;cache/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;codeigniter/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;drivers/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;helpers/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;init/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;language/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;libraries/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;logs/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;plugins/
+<br />&nbsp; &nbsp;&nbsp; &nbsp;scaffolding/
+</code>
+
+<h2>Copy the Files</h2>
+
+<p>Copy Trimtab's <samp>system/application/</samp> folder into your CoolBrew modules folder. Since "application" isn't very descriptive, we'll rename it "trimtab".</p>
+
+<p>You'll also want to copy the <samp>css/</samp> and <samp>js/</samp> folders into your website's document root so that the application can find them. Since the application wasn't designed to take advantage of CoolBrew's <a href="libraries/collector.html">Collector library</a>, these folders cannot be moved into the module folder like a normal CoolBrew module.</p>
+
+<p>Lastly, you'll want to look carefully at the <samp>system/language</samp>, <samp>system/libraries</samp>, and <samp>system/plugins</samp> folders to make sure that there aren't any non-standard files being used outside the application folder. If there are, you will need to copy them to the equivalent folders in your CoolBrew installation.</p>
+
+<h2>Create an "index" File</h2>
+
+<p>In your website documents folder, create a new page where you want the application's screens to display. For our example, we create a page called <samp>trimtab.php</samp>. This is the equivalent of CodeIgniter's index.php file. In our case, the code in the file looks like this:</p>
+
+<code>
+&lt;?php
+<br />&nbsp; &nbsp;require_once 'coolbrew.inc.php';
+<br />&nbsp; &nbsp;get("trimtab");
+<br />?&gt;
+</code>
+
+<h2>View Your Application</h2>
+
+<p>Now, using your web browser, go to the page you just created:</p>
+
+<code>
+http://www.yoursite.com/trimtab.php
+</code>
+
+<p>You should see a working copy of your application.</p>
+
+
+<h2>Troubleshooting</h2>
+
+<p>To allow CoolBrew to make multiple calls to the system, the CodeIgniter constant <var>APPPATH</var> had to be changed to a variable. Most of the time, this isn't important, but since we're dealing with an application designed to be run using CodeIgniter, we need to make sure these constants are converted.</p>
+
+<p>The easiest way to find where this constant is used is to do a module-wide search using a text editor like BBEdit. Your search should look for <var>APPPATH</var> and replace it with <var>APPPATH()</var>.</p>
+
+
+<h2>Limitations</h2>
+
+<p>Like any CoolBrew module, the application is available to any of the websites in your website group, but because the application was not designed to be used on multiple sites, it will access the same data regardless of which site it is displayed on.
+
+<h2>Customizing the Look</h2>
+
+<p>Because CoolBrew looks for views first in the website's document root, then in the module's <dfn>views</dfn> folder, you should be able to create custom views for each of the websites that runs the application. If the application uses a different templating engine, however, this won't work. See the section on <a href="views.html">views</a> in this guide for details.
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

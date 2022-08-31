@@ -1,0 +1,9 @@
+$Id$
+
+id = heat
+name = HEAT
+description = Implements an interface to HEAT tickets.
+extends = admin
+base path = 
+default page = 
+restricted = 1

@@ -1,0 +1,9 @@
+$Id$
+
+id = recipes
+name = Recipes
+description = Implements tools for managing, searching and displaying recipes.
+extends = sites
+base path = admin/recipes.php
+default page = recipes/index
+restricted = 1

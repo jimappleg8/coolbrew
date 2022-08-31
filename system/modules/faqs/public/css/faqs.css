@@ -1,0 +1,9 @@
+/* FAQs-specific styles */
+
+.listing a.question { color:#000; text-decoration:none; }
+.listing a.question:hover { color:#FFF; text-decoration:underline; }
+
+.faq-answer { text-indent:0; border:0; }
+.faq-answer p { margin-bottom:1em; }
+.faq-answer ul { margin-top:1em; }
+.faq-answer li { list-style-type:disc; }

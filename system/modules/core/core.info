@@ -1,0 +1,9 @@
+$Id$
+
+id = core
+name = Core
+description = Creates an interface to many of the CodeIgnighter libraries.
+extends = admin
+base path = 
+default page = 
+restricted = 1

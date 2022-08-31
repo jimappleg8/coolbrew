@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Session Module
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Session Module</h1>
+
+<p>This module gives you access to the Session class from your website documents. This is necessary since we are not using native PHP sessions. The Session class permits you maintain a user's "state" and track their activity while they browse your site. The Session class stores session information for each user.</p>
+
+<p class="important">For more information about the methods accessed by these tags, please see the <a href="http://www.codeigniter.com/user_guide/libraries/sessions.html">Session Class</a> section of the <i>CodeIgniter User Guide</i> and the <a href="../libraries/db-session.html">DB Session Class</a> section of this manual.</p>
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>userdata</kbd>', '<var>item</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Returns a specific item from the session array.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>set_userdata</kbd>', '<var>item</var>', '<var>new_value</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Adds or changes data in the "userdata" array.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>unset_userdata</kbd>', '<var>item</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Deletes a session variable from the "userdata" array.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>flashdata</kbd>', '<var>item</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Returns "flash" data for the given key.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>set_flashdata</kbd>', '<var>item</var>', '<var>value</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Sets flash data which will be available only in next request.</p>
+
+
+<h2><span class="tag">&lt;?php</span> get('<kbd class="mod">core.session.</kbd><kbd>keep_flashdata</kbd>', '<var>item</var>'); <span class="tag">?&gt;</span></h2>
+
+<p>Keeps existing "flash" data available to next request.</p>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

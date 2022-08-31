@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Earth's Best upstage script."
+echo ""
+
+rsync --exclude=.svn --exclude=family_tree/* -ra -e ssh '/var/opt/httpd/ebdocs/' 'eagles:/var/opt/httpd/ebstage'
+echo 'copied from DEV to STAGING on Eagles (ebdocs --> ebstage)'
+
+rsync --exclude=.svn --exclude=family_tree/* -ra -e ssh '/var/opt/httpd/ebdocs/' 'seahawks:/var/opt/httpd/ebstage'
+echo 'copied from DEV to STAGING on Seahawks (ebdocs --> ebstage)'
+
+
+exit 0

@@ -1,0 +1,10 @@
+
+/* Recipe-specific styles */
+
+/* ------------------------------------------------------------------
+    Recipe Search
+   ------------------------------------------------------------------ */
+
+.recipe-search form select { width:200px; }
+.recipe-search form input[type=button] { color:#FFF; background-color:#000;
+  height:20px; font-family:arial; font-size:12px; margin-left:9px; }

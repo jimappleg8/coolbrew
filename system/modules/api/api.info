@@ -1,0 +1,9 @@
+$Id$
+
+id = api
+name = API
+description = The web services that connect our data with other sites.
+extends = sites
+base path = 
+default page = 
+restricted = 0

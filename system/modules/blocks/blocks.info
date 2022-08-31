@@ -1,0 +1,8 @@
+$Id$
+
+id = blocks
+name = Blocks
+extends = sites
+base path = admin/blocks.php
+default page = blocks/index
+restricted = 1

@@ -1,0 +1,9 @@
+$Id$
+
+id = mailform
+name = MailForm
+description = Implements Contact Us and other forms.
+extends = sites
+base path = admin/mailform.php
+default page = contact/index
+restricted = 1

@@ -1,0 +1,9 @@
+$Id$
+
+id = products
+name = Products
+description = Implements tools for managing product data for all brands.
+extends = sites
+base path = admin/products.php
+default page = products/index
+restricted = 1

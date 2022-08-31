@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Collector Module
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Collector Module</h1>
+
+<p>This module gives you access to the Collector class from your website documents. The Collector class contains functions that collect and consolidate both JavaScript and Cascading Style Sheets (CSS).</p>
+
+<p class="important">For more information about the methods accessed by these tags, please see the <a href="../libraries/collector.html">Collector Class</a> section of this user guide.</p>
+
+<h2>Using the Collections</h2>
+
+<p>Normally, you'll want to collect all the JavaScript and CSS data as early as possible so it can be used in the head section of your document. For that to work, all the tags that contribute JS or CSS to the collection need to be run before the header is completed. Many times, the only way to do that is to store the results of the tag in a variable to be displayed later on the page:</p>
+
+<code>
+&lt;?php
+<br />require_once 'coolbrew.inc.php';
+<br />
+<br />$return = TRUE;
+<br />$submenu = get('menu.submenu', 'home', $return);
+<br />
+<br />$hdr['title'] = "This is the title";
+<br />$hdr['js'] = get('core.collect.wrap_js');
+<br />get('core.view.load', 'header', $data); 
+<br />
+<br />?&gt;
+<br />
+<br />&lt;div id="submenu"&gt;
+<br />&lt;?=$submenu?&gt;
+<br />&lt;/div&gt;
+</code>
+
+<p>In this example:</p>
+<ol>
+<li>We run the fictional <dfn>menu.submenu</dfn> tag at the top of the page because we know that the tag adds some JavaScript code to the JavaScript collection. Since we don't want to display it where the tag is, we specify that we want the results returned instead of displayed and we store it in the <var>$submenu</var> variable.</li>
+<li>We gather the JavaScript collection (which will include the JavaScript from the <dfn>menu.submenu</dfn> tag) using the <dfn>core.collect.wrap_js</dfn> tag and send it to the header template.</li>
+<li>We display the <var>$submenu</var> HTML that we saved earlier.
+</ol>
+
+<p>The collection can be returned to your page and then sent to a view file as shown above, or you can load the data directly from inside your view files:</p>
+
+<code>
+&lt;?=$this-&gt;collector-&gt;wrap_js();?&gt;
+</code>
+
+
+<h2>Adding Code From a File</h2>
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>append_js_file</kbd>, '<var>file</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Adds the contents of <var>file</var> to the JavaScript collection.</p>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>append_css_file</kbd>, '<var>file</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Adds the contents of <var>file</var> to the CSS collection.</p>
+
+
+
+<h2>Adding Code Directly</h2>
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>append_js_code</kbd>, '<var>code</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Adds supplied code to the JavaScript collection.</p>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>append_css_code</kbd>, '<var>code</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Adds supplied code to the CSS collection.</p>
+
+
+<h2>Getting the Collected Data</h2>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>wrap_js</kbd>, '<var>wrapper</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Returns the JavaScript collection wrapped in HTML &lt;SCRIPT&gt; tags.</p>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>wrap_css</kbd>, '<var>media</var>', '<var>wrapper</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Returns the CSS collection wrapped in HTML &lt;STYLE&gt; tags.</p>
+
+
+<h2>Other Utilities</h2>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>get_js_file</kbd>, '<var>file</var>'); <span class="tag">?&gt;</span></h3>
+
+<p>Returns the contents of the javascript <var>file</var>.</p>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>get_js</kbd>'); <span class="tag">?&gt;</span></h3>
+
+<p>Returns the JavaScript collection without wrapping it first.</p>
+
+
+<h3><span class="tag">&lt;?php</span> get('<kbd class="mod">core.collect.</kbd><kbd>get_css</kbd>'); <span class="tag">?&gt;</span></h3>
+
+<p>Returns the CSS collection without wrapping it first.</p>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

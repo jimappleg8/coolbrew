@@ -1,0 +1,72 @@
+/* CSS definitions for Jobs module */
+
+input[type="text"], input[type="password"], textarea { background: #FFF;
+  border: 2px solid; border-color: #999 #D9D9D9 #D9D9D9 #999;}
+
+div.error { color:red; font-size:11px; background:#FF9; 
+  padding:4px 12px 4px 12px; border-top:2px solid #F00; 
+  border-bottom:2px solid #F00; }
+
+.dark { color:#000; }
+
+.pipe { padding:0 3px; color:#999; }
+
+a.admin:link, a.admin:visited { color:#F00; font-size:11px;
+  font-weight:normal; background:transparent; padding:1px; }
+a.admin:hover { color:#FFF; background:#F00; text-decoration:none; 
+  padding:1px; }
+
+#listing { margin-top:24px; }
+#listing th { color:#FFF; background:#666; font-weight:bold; text-align:left; 
+  padding:4px 0 4px 6px; }
+#listing td { background:#FFF; border-bottom:1px solid #D0D0D0; 
+  padding:4px 0 4px 6px; }
+#listing td.hidden { background:#D0D0D0; border-bottom:0px; padding:5px 0 0 0; }
+
+#read-only { border-bottom:1px solid #FC0; border-top:0px solid #FC0;
+  border-left:1px solid #999; border-right:1px solid #999; 
+  padding:0 20px 0 20px; margin:0; background:#FF9; clear:both; }
+#read-only p { color:#900; padding:4px 0 4px 0; margin:0; background:#FF9;
+  font-size:11px; }
+
+#message { border-bottom:1px solid #69C; border-top:0px solid #69C;
+  border-left:1px solid #999; border-right:1px solid #999; 
+  padding:0 20px 0 20px; margin:0; background:#9CF; clear:both; }
+#message p { color:#036; padding:4px 0 4px 0; margin:0; background:#9CF;
+  font-size:11px; }
+
+#job-dataarea { border-right:1px solid #999; border-bottom:1px solid #999;
+  border-left:1px solid #999; padding:0 20px 20px 20px; margin:0; 
+  font-size:14px; color:#4F5155; background:#fff none; clear:both;
+  font-family:Lucida Grande, Verdana, Geneva, Sans-serif; }
+* html #job-dataarea { height:0; }
+  
+#job-dataarea div.page-header { border-bottom:1px solid #D0D0D0; 
+  margin:0 0 24px 0; padding:5px 0 0 0; }
+#job-dataarea div.page-header h2 { background-color:transparent; 
+  color:#444; font-size:16px; font-weight:bold; }
+#job-dataarea div.page-header-links { float:right; width:450px; font-size:11px;
+  margin:10px 20px 0 0; text-align:right; color:#CCC; display:inline; }
+
+#job-hdrMenu { font-size:11px; color:#333; padding:0; margin:0 15px 6px 0; 
+  background:#FFF none; text-align:right; }
+#job-hdrMenu a { background:transparent none; padding:0; margin:0; color:#333; }
+#job-hdrMenu a:hover { color:#000; }
+
+#job-menubar { float:left; width:100%; font-size:93%; line-height:normal;
+  background:#FFF url("/images/menu/bg.gif") repeat-x bottom; 
+  margin:0; }
+#job-menubar ul { margin:0; padding:2px 10px 0 10px; list-style:none; }
+#job-menubar li { float:left; margin:0 4px 0 0; padding:0; display:inline; 
+  background:url("/images/menu/right.gif") no-repeat right top; }
+#job-menubar a { float:left; display:block; margin:0; 
+  background:url("/images/menu/left.gif") no-repeat left top; 
+  padding:5px 15px 4px; text-decoration:none; font-weight:bold; color:#369; }
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#job-menubar a { float:none; }
+/* End IE5-Mac hack */
+#job-menubar a:hover { color:#036; }
+#job-menubar #current { background-image:url("/images/menu/right_on.gif"); }
+#job-menubar #current a { background-image:url("/images/menu/left_on.gif"); 
+  color:#036; padding-bottom:5px; }
+

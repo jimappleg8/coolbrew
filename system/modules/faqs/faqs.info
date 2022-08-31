@@ -1,0 +1,15 @@
+$Id$
+
+id = faqs
+name = FAQs
+extends = sites
+base path = admin/faqs.php
+default page = sites/faqs/index
+restricted = 1
+
+id = shared_faqs
+name = Shared FAQs
+extends = admin
+base path = admin/faqs.php
+default page = cp/faqs/index
+restricted = 1

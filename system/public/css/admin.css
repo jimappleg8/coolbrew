@@ -1,0 +1,347 @@
+/*-------------------------------------------------
+PAGE BODY
+-------------------------------------------------*/
+
+body { margin:0; padding:0 0 60px 0; color:#222; background-color:#e5e5e5; 
+  font-family:"Lucida Grande", verdana, arial, helvetica, sans-serif;
+  text-align:center; }
+
+/* Make sure the table cells show the right font */
+td { font-family:"Lucida Grande", verdana, arial, helvetica, sans-serif; }
+
+
+/*-------------------------------------------------
+GLOBALS & GENERAL CASES
+-------------------------------------------------*/
+
+input { padding:3px; }
+input[type="text"], input[type="password"], textarea { background: #FFF;
+  border: 2px solid; border-color: #999 #D9D9D9 #D9D9D9 #999;}
+
+a { text-decoration:underline; padding:1px; }
+a:link { color:#03c; }
+a:visited { color:#03c; }
+a:hover { color:#fff; background-color:#30c; text-decoration:none; }
+
+span.admin { color:#999; font-size:11px; font-weight:normal; }
+a.admin:link, a.admin:visited { color:#f00; font-family:verdana; font-size:11px;
+  font-weight:normal; }
+a.adminfull:link, a.adminfull:visited { color:#f00; font-weight:bold;
+  text-decoration:underline; }
+a.admin:hover, a.adminfull:hover { color:#fff; background:#f00; }
+
+a.black:link, a.black:visited { color:#000; }
+a.black:hover { color:#fff; background:#000; }
+
+form { margin:0; padding:0; }
+
+p { font-size:12px; line-height:16px; }
+
+small { font-size:10px; line-height:13px; }
+
+blockquote { font-size:12px; color:#666; margin:20px; }
+
+ol, ul, li { margin:0; padding:0; }
+ul li { list-style-type:none; }
+li { font-size:11px; line-height:13px; padding:3px 0; }
+
+h1 { font-family:"Lucida Grande", arial, sans-serif; padding:0; border-bottom:0; margin:0; color:#333; font-size:16px; font-weight:bold; }
+
+h1.blankslate { background:#ff6; color:#000; margin-bottom:10px; padding:5px; margin-left:-5px; }
+h1.blankslate a { color:#f00; }
+h1.blankslate a:hover { background-color:#000; color:#fff; }
+p.blankslate { font-size:14px; color:#000; padding:5px; margin:0 0 10px 0; }
+p.blankslate strong { background:#ff6; }
+
+h2 { font-family:"Lucida Grande", arial, sans-serif; margin:20px 0 5px 0px; color:#333; font-size:14px; padding:0; }
+
+h2.subheader { padding:0 0 2px 0; margin:15px 0 5px 0; font-size:12px; border-bottom:1px solid #000; color:#000; }
+
+h3 { margin:20px 0 0 0; color:#666; font-family:"Lucida Grande", arial, sans-serif; font-size:14px; padding:0; }
+
+.smallnote { font-size:10px; color:#999; font-weight:normal; }
+
+.light { font-weight:normal; }
+
+.lightgray { font-weight:normal; color:#666; font-size:9px; }
+.lightgray a:link, .lightgray a:visited { color:#999; background:inherit;
+  text-decoration:underline; }
+.lightgray a:hover { color:#fff; background:#000; }
+.smallgray { font-weight:normal; color:#666; font-size:10px; }
+.smallgray a:link, .smallgray a:visited { color:#666; background:inherit;
+  text-decoration:underline; }
+.smallgray a:hover { color:#fff; background:#000; }
+
+.highlight { background-color:#ffc; }
+
+td, th { padding:3px; text-align:left; }
+
+.bigger { font-size:12px; }
+
+.red { color:red; }
+.blue { color:#06c; }
+.green { color:#390; }
+
+code, pre { background:inherit; color:#333; font-size:80%;
+  font-family:Monaco, "Courier New", Courier, Monospace; }
+pre { overflow:auto; }
+/*  Work around IE/Win code size bug - courtesy Jesper, waffle.wootest.net  */
+* html code	{ font-size :105%; }
+
+
+/*-------------------------------------------------
+HEADER
+-------------------------------------------------*/
+
+#Header { width:980px; background:#FFF; padding:0; 
+  margin:15px auto 0 auto; text-align:left; position:relative; }
+#Header h1 { padding:0 0 10px 0; margin:7px 0 0 30px;
+  font-size:36px; font-weight:normal; color:#294D8B; text-align:left; }
+#Header h1 span { font-size:16px; font-weight:normal;
+  color:#000; border:none; font-family:"Lucida Grande", arial, sans-serif; }
+#Header h3 { padding:0 30px 0 32px; margin:7px 0 0 0; font-size:10px;
+  font-weight:normal; font-family:verdana; text-align:left; }
+#Header h3.global { position:relative; float:right; text-align:right;
+  width:300px; }
+#Header h3 span#floatright { text-align:right; width:300px; 
+  position:relative; float:right; }
+#Header h3 span#floatright a { font-weight:normal; }
+#Header h3 span.pipe { opacity:0.6; filter:alpha(opacity=60); }
+#Header h3 a.current { font-weight:bold; text-decoration:none; }
+#fresh-all h2 { padding:0 0 2px 0; margin:0; border-bottom:1px dotted #ccc; }
+#Header a:hover.image { background-color:none; background-color:transparent; }
+
+#masthead { width:980px; height:65px; 
+  background:#FFF url('/images/admin/header.jpg') no-repeat; }
+#masthead img.logo { padding:33px 0 0 46px; border:0; }
+
+#mainmenu { float:right; margin:33px 35px 0 0; padding:0; height:30px;
+  background:url('/images/admin/nav-mid.png') repeat-x; }
+#mainmenu div { margin:0 0 0 -12px; height:30px;
+  background:url('/images/admin/nav-left.png') no-repeat left top; }
+#mainmenu div div { padding:5px 12px; margin:0 -12px 0 0; height:30px;
+  background:url('/images/admin/nav-right.png') no-repeat right top; }
+#mainmenu ul { margin:0; padding:0; }
+#mainmenu li { float:left; padding:0 7px 0 7px; margin:0;
+  border-right:1px solid #999; }
+/* hack to make spacing correct in IE */
+* html #submenu li { margin:0 4px 0 0; padding:0 5px 0 3px;}
+/* end IE hack */
+#mainmenu .last { border-right:0px; }
+#mainmenu a { background:transparent none; color:#333; text-decoration:none; 
+  font-weight:normal; font-size:14px; }
+#mainmenu a:hover { color:#036; border-bottom:3px solid #294D8B; }
+#mainmenu .current a { color:#036; border-bottom:3px solid #294D8B; }
+
+
+/*-------------------------------------------------
+TABS
+-------------------------------------------------*/
+
+#Tabs { float:left; width:100%; line-height:normal; margin:0; 
+  background:#FFF url("/images/admin/menu/bg.gif") repeat-x bottom; }
+#Tabs ul { margin:0; padding:2px 13px 0 20px; list-style:none; }
+#Tabs li { float:left; margin:0 4px 0 0; padding:0; display:inline; 
+  background:url("/images/admin/menu/right.gif") no-repeat right top; }
+#Tabs a { float:left; display:block; margin:0; 
+  background:url("/images/admin/menu/left.gif") no-repeat left top; 
+  padding:3px 9px 2px; text-decoration:none; font-weight:bold; color:#294D8B; }
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#Tabs a { float:none; }
+/* End IE5-Mac hack */
+#Tabs a:hover { color:#294D8B; }
+#Tabs #current { background-image:url("/images/admin/menu/right_on.gif"); }
+#Tabs #current a { background-image:url("/images/admin/menu/left_on.gif"); 
+  color:#FFF; padding-bottom:3px; }
+
+
+/*-------------------------------------------------
+SUBMENU
+-------------------------------------------------*/
+
+#submenu { width:100%; margin:0; background:#294D8B none; 
+  border-bottom:1px solid #FFF; }
+#submenu ul { margin:0; padding:0 30px; }
+#submenu li { float:left; padding:0 7px 0 7px; margin:6px 0;
+  border-right:1px solid #FFF; }
+/* hack to make spacing correct in IE */
+* html #submenu li { margin:0 4px 0 0; padding:0 5px 0 3px;}
+/* end IE hack */
+#submenu .last { border-right:0px; }
+#submenu a { background:transparent none; color: #FFF; text-decoration:none; 
+  font-weight:normal; }
+#submenu a:hover { color:#FFF; text-decoration:underline; }
+#submenu #current a { font-weight:bold; }
+
+
+/*-------------------------------------------------
+STRUCTURE
+-------------------------------------------------*/
+
+div#Wrapper { width:927px; padding:12px 23px 20px 30px; margin:0 auto;
+  clear:both; background:#FFF url('/images/headers/bkgd.jpg') no-repeat left top; }
+
+.container { margin:0 auto; text-align:center; min-width:750px; }
+
+.ClearAll { padding:0px; clear:both; font-size:0px; }
+
+#ContentFrame, #DashContentFrame, .ContentFrame { margin:0; padding:0px 0; width:100%; text-align:left; /*position:relative;*/ float:left; }
+
+table.layout { clear:left; border-collapse:collapse; width:100%; }
+table.layout td.left, table.layout td.right { vertical-align:top; padding:0; }
+table.layout td.left { width:70%; }
+table.layout td.right { width:30%; }
+
+div.Left { margin:0; padding:0; text-align:left; width:70%; float:left; }
+
+div.Right { margin:0px 0 0 0; padding:0; text-align:left; /*position:absolute;*/ float:left; width:30%; }
+
+table.layout td.left div.Left, table.layout td.right div.Right { width:auto; float:none; }
+
+#Footer { clear:left; font-size:9px; color:#666; margin:4px 8px 0 20px;
+  text-align:left; padding-bottom:15px; }
+#Footer a:link, #Footer a:visited { color:#666; }
+#Footer a:hover { color:#fff; background:#666; }
+
+
+/*-------------------------------------------------
+NEW FOR PROPORTIONAL WIDTH VERSION 
+-------------------------------------------------*/
+
+.col { padding:0 20px; text-align:left; }
+.Left .col, .Full .col { padding:0; position:relative; 
+  background:#fff none; border:1px solid #294D8B; }
+.Left .col { margin-right:8px; }
+.Left .innercol, .Full .innercol { padding:15px 23px 20px 23px; }
+div.Left .bottom, div.Full .bottom { font-size:8px; 
+  background:transparent none; margin-right:8px; }
+div.Right .col { min-width:200px; padding:0 0 0 9px; }
+
+
+/*-------------------------------------------------
+HEALTHY HOVER CLASSES
+-------------------------------------------------*/
+
+/* the default link color  */
+a.clicked:link, a.clicked:visited { text-decoration:underline !important;
+  background:none !important; color:#03c !important; }
+
+/* the admin link color */
+p.submit a.clicked:link, p.submit a.clicked:visited, div.submit a.clicked:link, div.submit a.clicked:visited, div.page-header a.clicked:link, div.page-header a.clicked:visited { color:#f00 !important; }
+
+
+/*------------------------------------------------- 
+PAGE HEADER 
+-------------------------------------------------*/
+
+div.page-header { background:#edf3fe; margin:0 0 5px 0; 
+  padding:13px 30px 13px 24px; }
+div.page-header h1 { padding:0; margin:0; font-size:14px; color:#000; }
+div.page-header h1 span { font-size:12px; color:#666; font-weight:normal; }
+div.sheet div.page-header h1 { font-size:20px; }
+div.page-header p { margin:5px 0 0 0; }
+
+
+/*------------------------------------------------- 
+PAGE HEADER LINKS 
+-------------------------------------------------*/
+
+div.page-header-links { float:right; width:200px; font-size:11px; margin-top:0;
+  text-align:right; color:#ccc; line-height:20px; }
+div.page-header-links strong { color:#000; }
+div.page-header-links a.active:link, div.page-header-links a.active:visited, div.page-header-links a.active:hover { background:#999; color:#000;
+  text-decoration:none; font-weight:normal; }
+div.page-header-links a.edit { text-decoration:none; color:#777; }
+div.page-header-links a.edit:hover { color:#fff; }
+
+
+/*-------------------------------------------------
+SIDEBARS
+-------------------------------------------------*/
+
+body .Right h1 { background-color:#EDF3FE; border-bottom:1px solid #DCDCDC;
+  margin:0 0 5px 0; color:#333; padding:6px 8px; font-size:13px; }
+body .Right p { font-size:12px; line-height:1.3em; color:#222; }
+body .Right div.indent { padding-left:8px; }
+
+
+/*-------------------------------------------------
+BASIC FORM
+-------------------------------------------------*/
+
+#basic-form { font-family:verdana, sans-serif; }
+#basic-form p.blockintro { color:#666; font-size:12px; line-height:1.3em;
+  margin:0; }
+#basic-form dl {  }
+#basic-form dt { width:80px; margin:4px 8px 0 0; padding:0; text-align:right;
+  white-space:nowrap; float:left; clear:left; position:relative; }
+#basic-form dd { margin:0 0 5px 0px; font-size:10px; }
+#basic-form div.block { color:#333; background:#f0f0f0; margin:3px 0 25px 0;
+  padding:5px; font-size:11px; font-weight:normal; }
+#basic-form div.block input { font-size:12px; }
+#basic-form h2 { font-size:14px; color:#000; margin-bottom:10px; padding:0;
+  margin:0 0 5px 0; }
+#basic-form div.action, div.action { border-top:2px solid #000;
+  margin-bottom:10px; text-align:right; padding-top:8px; font-size:12px; }
+#basic-form div p { margin:0; }
+
+.settings #basic-form div.categories { margin-bottom:0; }
+.settings #basic-form div.categories li { list-style:square; margin-left:15px;
+  font-size:11px; }
+.settings #basic-form div.categories li span { font-size:10px; color:#999; }
+.settings #basic-form div.addnewcategory p { margin:0; }
+.settings #basic-form div#statusoptions p { margin:0 0 5px 0; }
+.settings #basic-form div#statusoptions p span { font-size:10px; color:#666; }
+
+#basic-form div.explanation { border-top:1px solid #ccc; margin:10px 0 0 0; padding:10px 10px 0 10px; }
+#basic-form div.explanation p { margin-bottom:10px; font-size:11px; }
+#basic-form dt.required { font-weight:bold; }
+#basic-form dd input { vertical-align:middle; }
+#basic-form dt { width:150px; }
+
+
+/*-------------------------------------------------
+OLDER STYLES
+-------------------------------------------------*/
+
+div.error { color:red; font-size:11px; background:#FF9; 
+  padding:4px 12px 4px 12px; border-top:2px solid #F00; 
+  border-bottom:2px solid #F00; }
+
+.dark { color:#000; }
+
+.pipe { padding:0 3px; color:#999; }
+
+a.admin:link, a.admin:visited { color:#F00; font-size:11px;
+  font-weight:normal; background:transparent; padding:1px; }
+a.admin:hover { color:#FFF; background:#F00; text-decoration:none; 
+  padding:1px; }
+
+.listing { font-size:12px; }
+.listing table { margin:0 auto; }
+.listing th { color:#FFF; background:#666; font-weight:bold; text-align:left; 
+  padding:4px 0 4px 6px; }
+.listing td { background:#FFF; padding:4px 0 4px 6px; }
+.listing td.line { border-bottom:1px solid #D0D0D0; }
+.listing td.hidden{ background:#D0D0D0; border-bottom:0px; padding:5px 0 0 0; }
+
+#read-only { border-bottom:1px solid #FC0; border-top:0px solid #FC0;
+  border-left:1px solid #999; border-right:1px solid #999; 
+  padding:0 20px 0 20px; margin:0; background:#FF9; clear:both; }
+#read-only p { color:#900; padding:4px 0 4px 0; margin:0; background:#FF9;
+  font-size:11px; }
+
+#message { width:980px; margin:0 auto; background:#9CF; clear:both; }
+#message p { color:#036; padding:4px 20px; margin:0; background:#9CF;
+  font-size:11px; text-align:center; }
+
+ 
+.inline-form { padding:12px; border:1px solid #666; background:#D0D0D0;
+   margin:12px auto 12px auto; width:500px; }
+
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; 
+  visibility: hidden; }
+/* Hides from IE-mac \*/ 
+* html .clearfix { height:1%; }
+/* End hide from IE-mac */

@@ -1,0 +1,121 @@
+/* --------------------------------
+    Monitor styles
+   -------------------------------- */
+
+#content { width:800px; margin:40px 80px 80px 80px; padding:0; 
+  line-height:1.4em; }
+
+#content a { color:#66F; text-decoration:none; }
+#content a:hover { text-decoration:underline; }
+
+#content p { margin:10px 20px 12px 0; }
+
+#content strong { color:#333; }
+#content h1 { color:#333; font-weight:normal; font-size:22px; 
+  margin:0 0 15px 0; padding:0; }
+#content h1 span { font-size:14px; }
+#content h2 { background-color:transparent; border-bottom:1px solid #D0D0D0;
+  color:#444; font-size:16px; font-weight:bold; margin:24px 0 2px 0; 
+  padding:5px 0 6px 0; }
+#content h3 { background-color:transparent; color:#333; font-size:14px;
+  font-weight:bold; margin:22px 0 12px 0; padding:0 0 0 0; }
+#content h4 { background-color:transparent; color:#444; font-size:14px;
+  font-weight:bold; margin:22px 0 0 0; padding:0 0 0 0; }
+#content li { padding-bottom:0.5em; }
+
+#content code { font-family:Monaco, Verdana, Sans-serif; font-size:12px;
+  background-color:#f9f9f9; border:1px solid #D0D0D0; color:#002166; 
+  display:block; margin:14px 0 14px 0; padding:12px 10px 12px 10px; }
+#content pre { font-family:Monaco, Verdana, Sans-serif; font-size:12px;
+  background-color:#f9f9f9; border:1px solid #D0D0D0; color:#002166;
+  display:block; margin:14px 0 14px 0; padding:12px 10px 12px 10px; }
+#content dfn { font-family:Lucida Grande, Verdana, Geneva, Sans-serif;
+  color:#00620C; font-weight:bold; font-style:normal; }
+#content var { font-family:Lucida Grande, Verdana, Geneva, Sans-serif;
+  color:#8F5B00; font-weight:bold; font-style:normal; }
+#content samp { font-family:Lucida Grande, Verdana, Geneva, Sans-serif;
+  color:#480091; font-weight:bold; font-style:normal; }
+#content kbd { font-family:Courier, monospace;
+  color:#A70000; font-weight:bold; font-style:normal; }
+#content kbd.mod { color:#966; font-weight:bold; font-style:normal; }
+#content kbd.path { background-color:#EBF3EC; color:#005702; padding:1px 6px; }
+
+#content .important { background:#FBE6F2; border:1px solid #D893A1; color:#333;
+  margin:10px 0 5px 0; padding:10px; }
+#content .important p { margin:6px 0 8px 0; padding:0; }
+
+#content .question { background:#FF9; border:1px solid #FF0; color:#333;
+  margin:10px 0 5px 0; padding:10px; }
+#content .question p { margin:6px 0 8px 0; padding:0; }
+#content .question p.q { margin-bottom:1em; padding-bottom:1em;
+  border-bottom:1px solid #4F5155; font-weight:bold; }
+
+#content .critical { background:#FBE6F2; border:1px solid #E68F8F; color:#333;
+  margin:10px 0 5px 0; padding:10px; }
+#content .critical p { margin:5px 0 6px 0; padding:0; }
+
+#content .editor { background:#FF0; font-size:90%; padding:2px 6px 2px 6px;
+  color:#F00; border:1px dashed #F00; }
+
+#content .email { font-family:Monaco, Verdana, Sans-serif; font-size:12px;
+  background-color:#f9f9f9; border:1px solid #D0D0D0; color:#002166;
+  display:block; margin:14px 0 14px 0; padding:12px 10px 12px 10px; }
+#content .email pre { border:0; padding:0; margin:1em 0; }
+
+#content .check:before { content:'\221A'; }
+#content .check { font-size:120%; color:red; font-weight:bold;
+  padding-right:12px; }
+
+/* --------------------------------------------------------------
+   general table settings
+   -------------------------------------------------------------- */
+
+table.info { border-collapse:collapse; margin:2em 0 1em 0; }
+table.info th { padding:6px 12px; border:1px solid #000; 
+  vertical-align:top; font-weight:bold; text-align:left; }
+table.info td { padding:6px 9px; border:1px solid #000; 
+  vertical-align:top; }
+
+/* --------------------------------------------------------------
+   SVN URL parameters
+   -------------------------------------------------------------- */
+
+table.svn-url { border-collapse:collapse; margin:2em 0 1em 0; width:800px;
+  font-size:0.8em; }
+table.svn-url th { padding:6px 12px; border:1px solid #000; 
+  vertical-align:top; font-weight:bold; text-align:left; }
+table.svn-url td { padding:6px 9px; border:1px solid #000; 
+  vertical-align:top; }
+table.svn-url td.url { color:#609; }
+table.svn-url td.discontinued { color:#BBB; }
+
+
+/* --------------------------------------------------------------
+   Disk Space progress bar
+   -------------------------------------------------------------- */
+
+.progress {
+        border: 2px solid #5E96E4;
+        height: 32px;
+        width: 540px;
+        margin: 30px auto;
+}
+.progress .prgbar {
+        background: #A7C6FF;
+        width: <?php echo $dp; ?>%;
+        position: relative;
+        height: 32px;
+        z-index: 999;
+}
+.progress .prgtext {
+        color: #286692;
+        text-align: center;
+        font-size: 13px;
+        padding: 9px 0 0;
+        width: 540px;
+        position: absolute;
+        z-index: 1000;
+}
+.progress .prginfo {
+        margin: 3px 0;
+}

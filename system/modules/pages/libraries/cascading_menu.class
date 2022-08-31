@@ -1,0 +1,239 @@
+<?php
+
+/**
+   Author: Scott Mattocks (mttcks@hotmail.com)
+   Date: July 16, 2003
+   File: cascading_menu.class
+**/
+
+/**
+  Changelog:
+  09/03/03 -- Thanks to Stig Benning for pointing out a javascript
+              error. The PHP was generating javascript calls to
+              objects that did not exist.  Thanks to the gang at
+              nyfe.org and front-end@lists.nyphp.org for help 
+              fixing the problem.
+**/
+
+/**
+ Class to create a cascading pop-up menu
+ **/
+class cascading_menu {
+
+   var $top;            // Number of pixels from the top edge of the screen
+   var $left;           // Number of pixels from the left edge of the screen
+   var $height;         // Height of main menu body in pixels
+   var $width;          // Width of main menu body in pixels
+   var $css_class;      // Style class identifier
+   var $choices;        // Array of sub-choices that will pop-up
+
+   /**
+    Constructor
+    **/
+   function cascading_menu($t, $l, $h, $w, $c)
+   {
+      $this->top = $t;
+      $this->left = $l;
+      $this->height = $h;
+      $this->width = $w;
+      $this->css_class = $c;
+   }
+
+   /**
+    Add a choice to the menu
+    **/
+   function add(&$c)
+   {
+      $c->parent = &$this;
+      $n = sizeof($this->choices);
+      
+      // Align choice
+      $c->top = $this->top;
+    
+      // Add choice to array
+      $this->choices[$n] = &$c;
+      
+      // Relocate all choices to accomodate new cell
+      for($i = 0; $i < $n+1 ; ++$i)
+      {
+         $this->choices[$i]->left = round($this->left + ($this->width/($n+1) * $i));
+         $this->choices[$i]->width = round($this->width/($n+1));
+      }
+      
+      return TRUE;
+   }
+
+   /**
+    Create the HTML needed for the main menu
+    **/
+   function write()
+   {
+      $sub_nav = '';
+
+      // JavaScript functions that will pop-up menus and swap images
+      $script = '<script type="text/javascript">
+                  function hide(id) {
+                     document.getElementById(id).style.visibility = "hidden";
+                  }
+                  function show(id) {
+                     document.getElementById(id).style.visibility = "visible";
+                  }
+                  function swap(id, img_src) {
+                     x = document.getElementById(id);
+                     x.src = img_src;
+                  }
+                 </script>
+                ';
+
+      // Main navigational menu will be placed statically with
+      // sub navigation positioned absolutely
+      $main_nav = '<table width="' . $this->width . 'px" height="' . $this->height . 'px" class="' . $this->css_class . '" cellpadding="0" cellspacing="0">
+                     <tr>
+                  ';
+      $n = sizeof($this->choices);
+      
+      // Add a table cell for each choice
+      for($i = 0; $i < $n; ++$i)
+      {
+         // ***Corrected***
+         $main_nav .= '<td width="' . $this->choices[$i]->width . 'px" height="' . $this->height . 'px" onmouseover="swap(\'main_nav_' . $i . '_img\', \'' . $this->choices[$i]->down_img . '\');'. $show = (sizeof($this->choices[$i]->choices) ? 'show(\'sub_nav_' . $i . '\');' : '') .'" onmouseout="swap(\'main_nav_' . $i . '_img\', \'' . $this->choices[$i]->up_img . '\');'. $hide = (sizeof($this->choices[$i]->choices) ? 'hide(\'sub_nav_' . $i . '\');' : '') .'" class="' . $this->choices[$i]->css_class . '">
+                      ';
+         $main_nav .= '<a href="' . $this->choices[$i]->link . '"><img id="main_nav_' . $i . '_img" src="' . $this->choices[$i]->up_img . '" width="' . $this->choices[$i]->width . 'px" height="' . $this->height . 'px" border="0" alt="' . $this->choices[$i]->label . '" /></a>';
+         $main_nav .= '</td>
+                      ';
+      }
+      $main_nav .= '   </tr>
+                     </table>
+                   ';
+
+      // Allow for cascading menus if there are sub-choices
+      for($i = 0; $i < $n; ++$i)
+      {
+         if(sizeof($this->choices[$i]->choices) > 0)
+         {
+            $sub_nav .= $this->sub_menu_write($this->choices[$i], 'sub_nav_' . $i);
+         }
+      }
+
+      // Return HTML
+      return $script . $main_nav . $sub_nav;
+   }
+
+   /**
+    Create the HTML needed for the sub-menus
+    **/
+   function sub_menu_write($c, $id)
+   {
+      // Menus are postitioned absolutely
+      $ret = '<table class="' . $c->css_class . '" id="' . $id . '" width="' . $c->width . 'px" height="' . $this->height . 'px" style="position: absolute; top: ' . $c->choices[0]->top . 'px; left: ' . $c->choices[0]->left . 'px; visibility: hidden;" onmouseover="show(\'' . $id . '\')" onmouseout="hide(\'' . $id . '\')" cellpadding="0" cellspacing="0">
+             ';
+ 
+      // Create a table cell for each choice
+      for($i = 0; $i < sizeof($c->choices); ++$i)
+      {
+         $ret .= ' <tr>
+                    <td class="' . $c->choices[$i]->css_class . '" onmouseover="swap(\'' . $id . '_img_' . $i . '\', \'' . $c->choices[$i]->down_img . '\');';
+
+         // Keep higher level menus visible
+         if(sizeof($c->choices[$i]->choices))
+         {
+            $ret .= 'show(\'' . $id . '_' . $i . '\');';
+         }
+         $temp_id = $id;
+         while(strlen($temp_id)-2 > 8) // ***Corrected***
+         {
+            $temp_id = substr($temp_id, 0, -2);
+            $ret .= 'show(\'' . $temp_id . '\');';
+         }
+
+         // Hide higher level menus 
+         $ret .= '" onmouseout="swap(\'' . $id . '_img_' . $i . '\', \'' . $c->choices[$i]->up_img . '\');';
+         if(sizeof($c->choices[$i]->choices))
+         {
+            $ret .= 'hide(\'' . $id . '_' . $i . '\');';
+         }
+         $temp_id = $id;
+         while(strlen($temp_id)-2 > 8) // ***Corrected***
+         {
+            $temp_id = substr($temp_id, 0, -2);
+            $ret .= 'hide(\'' . $temp_id . '\');';
+         }
+
+         // Add image and link
+         $ret .= '"><a href="' . $c->choices[$i]->link . '"><img id="' . $id . '_img_' . $i . '" src="' . $c->choices[$i]->up_img . '" height="' . $this->height . '" width="' . $c->width . '" border="0" /></a></td>
+                  </tr>
+                 ';
+      }
+      $ret .= '</table>';
+
+      // Recusively call function as needed
+      for($i = 0; $i < sizeof($c->choices); ++$i)
+      {
+         if(sizeof($c->choices[$i]->choices))
+         {
+            $ret .= $this->sub_menu_write($c->choices[$i], $id . '_' . $i);
+         }
+      }
+
+      // Return HTML
+      return $ret;
+   }
+}
+
+/**
+ Class for cascading_menu options
+ **/
+class choice {
+   
+   var $parent;         // Higher level menu
+   var $top;            // Number of pixels from top edge of screen
+   var $left;           // Number of pixels from left edge of screen
+   var $width;          // Width of choice in pixels
+   var $link;           // Url to link to
+   var $label;          // Alt for image
+   var $up_img;         // Original image
+   var $down_img;       // Mouseover image
+   var $css_class;      // Style class for choice
+   var $choices;        // Array of sub-choices
+
+   /**
+    Constructor
+    **/
+   function choice($u, $d, $li, $la, $c)
+   {
+      $this->up_img = $u;
+      $this->down_img = $d;
+      $this->link = $li;
+      $this->label = $la;
+      $this->css_class = $c;
+      return TRUE;
+   }
+
+   /**
+    Add sub-choices
+    **/
+   function add(&$c)
+   {
+      $c->parent = &$this;
+      $c->width = $this->width;
+
+      $n = sizeof($this->choices);
+      $this->choices[$n] = &$c;
+      
+      // Properly align choices
+      if(isset($this->parent->height))
+      {
+         // First level sub choices appear under main menu
+         $c->top = $this->top + ($this->parent->height * ($n+1));
+         $c->left = $this->left;
+      }
+      else
+      {
+         // Second+ level sub choices appear to the right of parent
+         $c->top = $this->top;
+         $c->left = $this->left + $this->width - 1;
+      }
+
+      return TRUE;
+   }
+}

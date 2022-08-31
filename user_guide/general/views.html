@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Views
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Views</h1>
+
+<p class="important"><strong>Note:</strong> This page is an extension of the <i>CodeIgniter User Guide</i> page of the same name. Please read the CodeIgniter <a href="http://www.codeigniter.com/user_guide/general/views.html">Views</a> page in addition to this page for complete information about this feature.</p>
+
+<p>CoolBrew extends the views system by allowing view files to be overridden. In other words, when you load a view, CoolBrew will look for the view file in three different folders and use the first one it finds:</p>
+<ol>
+<li><dfn>DOCPATH/views/MODULE_NAME/</dfn></li>
+<li><dfn>system/views/MODULE_NAME/</dfn></li>
+<li><dfn>system/modules/MODULE_NAME/views/</dfn></li>
+</ol>
+
+<p><strong>Please Note:</strong> To avoid running into a problem when multiple modules use the same view filename, view files in the system-level and document-level <dfn>views</dfn> folders are stored in folders named according to the module they come from. So while module-level view files are stored in <dfn>system/modules/MODULE_NAME/views/</dfn>, the system-level and document-level view files would be stored in <dfn>system/views/MODULE_NAME/</dfn> and <dfn>DOCPATH/views/MODULE_NAME/</dfn> respectively.</p>
+
+
+<h2>System-wide Default Views</h2>
+
+<p>A <dfn>views</dfn> folder has been added to the system level folder so that you can set up system-wide default views without having to edit the modules' default view files. This might make it easier to update modules as new versions are released. For example, to override the <kbd>sample-view.php</kbd> view file from the <samp>sample</samp> module, you would copy the module's default view file into the system-level <dfn>views</dfn> folder:
+
+<p><dfn>system/views/</dfn><samp>sample</samp>/<kbd>sample-view.php</kbd></p>
+
+<p>You can then make changes to the copy of <kbd>sample-view.php</kbd> and that changed view will become the default view for all your websites.</p>
+
+<p class="important"><strong>Note:</strong> If the module organizes its view files in subfolders inside it's <dfn>views</dfn> folder, make sure to recreate those subfolders when copying the view files.</p>
+
+
+<h2>Customizing Views for Each Website</h2>
+
+<p>If you don't like how one or more of the default views look on any of your websites, you can customize those views by placing copies of the view files into the document root of the websites you want to change. This gives you complete control over how each website looks. For example, to override the <kbd>sample-view.php</kbd> view file from the <samp>sample</samp> module, you would copy the module's default view file into the document-level <dfn>views</dfn> folder:
+
+<p><dfn>DOCPATH/views/</dfn><samp>sample</samp>/<kbd>sample-view.php</kbd></p>
+
+<p>You can then make changes to the local copy of <kbd>sample-view.php</kbd> and that changed view will display on that website only.</p>
+
+<p class="important"><strong>Note:</strong> If the module organizes its view files in subfolders inside it's <dfn>views</dfn> folder, make sure to recreate those subfolders when copying the view files.</p>
+
+
+<h2>Customized Views for CodeIgniter Applications</h2>
+
+<p>The same system is in operation when you are running a standard CodeIgniter application, so you can override those view files in the same way you would override a module's views. Since you can't have an application with the same name as a module, there shouldn't be any problem with folders conflicting inside the system-level or document-level <dfn>views</dfn> folders.
+
+<h2>Specifying a Different View File</h2>
+
+<p>In many cases, you can specify a different template name as part of the tag in cases where you may want to use the same tag in two different places -- and with two different looks -- on the same website. For example, if you wanted to use a different template name with the menu.left_menu tag, it would look like this:</p>
+
+<code>&lt;?php get("menu.left_menu", $menu_id, 2, false, 'different_left_menu.tpl'); ?&gt;</code>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

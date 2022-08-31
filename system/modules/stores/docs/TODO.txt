@@ -1,0 +1,10 @@
+To-Dos for the Stores Module
+----------------------------
+
+- add a "Copy" button to the store edit page.
+
+- complete the "messages" section of the admin area
+	- list the incomplete messages
+	- when clicked, show the message and related store and product
+	- allow for updates to the record and closing the message
+	- will need a way to assign carried/not carried to specific products

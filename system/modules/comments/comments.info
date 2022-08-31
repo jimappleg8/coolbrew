@@ -1,0 +1,9 @@
+$Id$
+
+id = comments
+name = Comments
+description = Tags to display consumer praises or "verbatims".
+extends = sites
+base path = 
+default page = 
+restricted = 1

@@ -1,0 +1,9 @@
+$Id$
+
+id = stores
+name = Stores
+description = Manages the store locator databases and consumer interfaces.
+extends = admin
+base path = admin/stores.php
+default page = stores/index
+restricted = 0

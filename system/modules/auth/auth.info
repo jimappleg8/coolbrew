@@ -1,0 +1,9 @@
+$Id$
+
+id = auth
+name = Auth
+description = An awkward attempt to implement user management.
+extends = sites
+base path = 
+default page = 
+restricted = 0

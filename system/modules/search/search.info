@@ -1,0 +1,9 @@
+$Id$
+
+id = search
+name = Search
+description = 
+extends = 
+base path = 
+default page = 
+restricted = 1

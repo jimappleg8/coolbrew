@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule  ^v1/(.*)$  /index.php/v1/$1  [L]
+RewriteRule  ^v2/?$  /index.php/v2/brands/index  [L] 
+RewriteRule  ^v2/(.*?)/?(index/)?(.*)$  /index.php/v2/$1/index/$3  [L] 

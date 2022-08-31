@@ -1,0 +1,237 @@
+
+/* ----------------------------------------------------------------
+    Styles for the newer form
+    In some cases these are already in a separate file: consumer.css
+   ---------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------
+    The styles for the older form are not in here as they conflict
+    with the newer styles. In all cases that the deprecated older
+    form is used, the styles have been manually added to the site's
+    CSS files.
+   ---------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------
+   Form styles
+   ---------------------------------------------------------------- */
+
+#contact-us fieldset {
+  clear: both;
+}
+#contact-us legend {
+  padding: 0 0 1.286em;
+  font-size: 1.167em;
+  font-weight: 700;
+}
+#contact-us fieldset fieldset legend {
+  padding: 0 0 1.5em;
+  font-size: 1em;
+}
+* html #contact-us legend {
+  margin-left: -7px;
+}
+*+html #contact-us legend {
+  margin-left: -7px;
+}
+
+#contact-us form .field, #contact-us form .buttons {
+  clear:both; 
+  margin: 0 0 1.5em;
+}
+#contact-us form .field label {
+  display: block;
+}
+#contact-us form ul.fields li {
+  list-style-type: none;
+  margin: 0;
+}
+#contact-us form ul.inline li, #contact-us form ul.inline label {
+  display: inline;
+}
+#contact-us form ul.inline li {
+  padding: 0 .75em 0 0;
+}
+
+#contact-us input.radio, #contact-us input.checkbox {
+  vertical-align: top;
+}
+#contact-us label, #contact-us button, #contact-us input.submit, #contact-us input.image {
+  cursor: pointer;
+}
+* html #contact-us input.radio, * html #contact-us input.checkbox {
+  vertical-align: middle;
+}
+*+html #contact-us input.radio, *+html #contact-us input.checkbox {
+  vertical-align: middle;
+}
+
+#contact-us textarea {
+  overflow: auto;
+}
+#contact-us input.text, #contact-us input.password, #contact-us textarea, #contact-us select {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.3em;
+  font-family: Helvetica, Arial, "Liberation Sans", "Bitstream Vera Sans", sans-serif;
+  vertical-align: baseline;
+}
+#contact-us input.text, #contact-us input.password, #contact-us textarea {
+  
+  border: 1px solid #444;
+  border-bottom-color: #666;
+  border-right-color: #666;
+  padding: 2px;
+}
+
+* html #contact-us button {
+  margin: 0 .34em 0 0;
+}
+*+html #contact-us button {
+  margin: 0 .34em 0 0;
+}
+
+#contact-us form.horizontal .field {
+  padding-left: 150px;
+}
+#contact-us form.horizontal .field label {
+  display: inline;
+  float: left;
+  width: 140px;
+  margin-left: -150px;
+}
+
+
+/* ----------------------------------------------------------------
+   contact us main form
+   ---------------------------------------------------------------- */
+
+#contact-us {
+  font-size: 16px !important;
+  width: 500px;
+  margin: 0 auto 24px auto;
+}
+
+#contact-us-inner {
+}
+
+#contact-us h2 {
+  font-size: 20px !important;
+  line-height: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #666;
+  padding-bottom:6px;
+  margin-top: 2em;
+}
+
+#contact-us h2 span {
+  font-size: 0.6em;
+  font-weight: normal;
+  padding-left: 9px;
+}
+
+#contact-us p {
+  font-size: 0.9em;
+  line-height: 1.4em;
+}
+
+#contact-us p.directions {
+  padding: 2px 0 0 6px;
+  margin-bottom: 6px;
+}
+
+#contact-us fieldset {
+  border: 0;
+}
+
+#contact-us form .field, form .buttons {
+  font-size: 12px;  /* 0.714em; */
+  line-height: 12px;
+  margin-bottom: 6px;
+}
+#contact-us form .field label {
+  text-align: right;
+}
+#contact-us form ul.fields label {
+  font-size: 12px;
+  line-height: 12px;
+}
+#contact-us form ul.fields li {
+  padding-left: 2em;
+  text-indent: -2em;
+}
+#contact-us form .required label {
+  font-weight: bold;
+  font-size: 1em;
+  font-style: none;
+}
+  
+#contact-us select {
+  padding: 3px;
+}
+
+#contact-us div.error {
+  background-color: #C00;
+/*  height: 23px; */
+  border: 1px solid #FFF;
+  margin-top: 3px;
+}
+#contact-us div.error p {
+  font-size: 1em;
+  color: #FFF;
+  padding-top: 3px;
+  font-weight:normal;
+  margin-bottom: 4px;
+}
+#contact-us div.error-icon {
+  float: left;
+  background-image: url('http://resources.hcgweb.net/rtags/images/hcg-sprites.png');
+  background-position: 0 0;
+  width: 27px;
+  height: 23px;
+  margin-right: 3px;
+}
+
+
+/* ----------------------------------------------------------------
+   contact us start form
+   ---------------------------------------------------------------- */
+
+#contact-us-start {
+}
+#contact-us-start form .field, form .buttons {
+  margin-bottom: 6px;
+}
+#contact-us-start form .field label {
+  text-align: right;
+}
+#contact-us-start form.horizontal .buttons {
+  padding-left: 150px;
+}
+
+
+/* ----------------------------------------------------------------
+   Clearfix
+   ---------------------------------------------------------------- */
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; 
+  visibility:hidden; }
+/* Hides from IE-mac \*/ 
+* html .clearfix { height:1%; }
+/* End hide from IE-mac */
+
+
+/* ----------------------------------------------------------------
+   Colors you may choose to override
+   ---------------------------------------------------------------- */
+
+#contact-us p.directions {
+  color: #000;
+}
+
+#contact-us h2,
+#contact-us form .field label, 
+#contact-us form ul.fields label,
+#contact-us form .required label {
+  color: #603913;
+  border-color: #603913;
+}

@@ -1,0 +1,1 @@
+<div class="Container">	  <div id="Dialog"><p>Sorry, but you don't have access to the requested page.</p><p><a href="<?=site_url('jobs/index');?>">Jobs home page</a></p></div></div>

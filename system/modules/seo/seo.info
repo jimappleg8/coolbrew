@@ -1,0 +1,9 @@
+$Id$
+
+id = seo
+name = SEO
+description = Implements tools that help with Search Engine Optimization (SEO).
+extends = sites
+base path = admin/seo.php
+default page = links/index
+restricted = 0

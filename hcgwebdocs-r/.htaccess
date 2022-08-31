@@ -1,0 +1,12 @@
+RewriteEngine on
+
+# ErrorDocument 404 /404.php
+
+RewriteRule  ^(.*)/stores/(.*)$  /stores.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/mailform/(.*)$  /mailform.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/search/(.*)$  /search.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/recipes/(.*)$  /recipes.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/jobs/(.*)$  /jobs.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/activedir/(.*)$  /activedir.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/eyelevel/(.*)$  /eyelevel.php/$1/rtags/$2   [P]
+RewriteRule  ^(.*)/faqs/(.*)$  /faqs.php/$1/rtags/$2   [P]

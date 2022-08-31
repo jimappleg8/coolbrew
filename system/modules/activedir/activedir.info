@@ -1,0 +1,9 @@
+$Id$
+
+id = activedir
+name = Active Directory
+description = Applications that use AD, especially the phone directory.
+extends = sites
+base path = 
+default page = 
+restricted = 0

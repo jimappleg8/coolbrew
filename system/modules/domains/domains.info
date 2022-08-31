@@ -1,0 +1,9 @@
+$Id$
+
+id = domains
+name = Domains
+description = Manages the hcgWeb domains.
+extends = admin
+base path = admin/domains.php
+default page = domains/index
+restricted = 0

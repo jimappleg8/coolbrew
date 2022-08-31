@@ -1,0 +1,15 @@
+This file describes how to install the PHPBind. 
+PHPBind (class.bind8.php) allows for control of Bind 8.2's configuration files from within
+PHP 4.0.x
+
+REQUIREMENTS
+
+1. PHP 4.0.x compiled with Sempahore and Shared memory support.
+
+
+INSTALLATION
+
+Copy class.bind8.php into a directory.  Add include() or require() in your php files with the path
+of the class.
+Edit class.bind8.php and change the location of named.conf and your domain db file locations.
+

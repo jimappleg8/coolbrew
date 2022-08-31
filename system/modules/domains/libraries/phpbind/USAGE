@@ -1,0 +1,15 @@
+class.bind8.php works in the following way:
+
+1) We declare a class from BindNS, with a domain name.
+2) If we do not use a domain name in declaring a class we may do so now
+by calling initialize() with the domain name.  Otherwise we can overload
+functions and replace global variables.
+3) We can call named() to get us a list of hosts (not zones!) currently
+in named.conf.
+4) We call initialize() with the domain name.
+5) We change/add/delete values in the domain.
+6) We call activate() or activare("delete").  To add or delete the domain
+from named.conf.
+
+
+For more info look in examples.

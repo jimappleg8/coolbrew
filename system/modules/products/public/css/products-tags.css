@@ -1,0 +1,161 @@
+
+/* Products-specific styles */
+
+/* ------------------------------------------------------------------
+    Product Detail
+   ------------------------------------------------------------------ */
+
+.product {  }
+
+.productRight { width:260px; padding-top:28px; float:right; padding-left:15px; }
+.productRight img { margin:0 auto; width:261px; display:block; }
+
+.productLeft { float:left; width:293px; }
+
+.productTitle { font-family:Arial, Helvetica, sans-serif; font-size:16px;
+  color:#3f0400; height:20px; font-weight:bold; margin:1em 0; }
+
+.productDetails { font-family:Arial, Helvetica, sans-serif; font-size:12px;
+  color:#3f0400; }
+
+.productFootnote { font-family:Arial, Helvetica, sans-serif; font-size:11px;
+  color:#3f0400; margin-top:20px; }
+
+.productSubTitle { font-family:Arial, Helvetica, sans-serif; font-size:14px;
+  color:#3f0400; height:20px; font-weight:bold; margin:1em 0 0.5em 0; }
+
+.productDetails a { font-family:Arial, Helvetica, sans-serif; font-size:12px;
+  color:#3f0400; text-decoration:underline; }
+.productDetails p { margin-top:10px; }
+
+.productNutrition a, a.productNutrition:link, a.productNutrition:hover, a.productNutrition:active, a.productNutrition:visited { 
+  text-decoration:underline; }
+.productNutrition, .productNutrition a { font-size:12px; color:#b32017; 
+  font-family:Arial, Helvetica, sans-serif; }
+
+.leftLink { margin-left:50px; }
+
+.findProduct { text-align:center; font-weight:bold; margin-top:10px; }
+.findProduct a { text-align:center; font-weight:normal; margin-top:10px; }
+.findProduct input { vertical-align:middle; }
+
+
+/* ------------------------------------------------------------------
+    Related Products
+   ------------------------------------------------------------------ */
+
+.relatedProductsBoxOuter { text-align:center; margin:0; padding:0; }
+
+.relatedProductsBox { border:1px solid #967573; margin:1em 0;
+  background-image:url('/images/top_ornament.gif'); background-repeat:no-repeat;
+  background-position:50% 0px; text-align:left; padding-bottom:18px; }
+
+.relatedProductsTitle { font-family:Arial, Helvetica, sans-serif;
+  font-size:12px; color:#3c0d06; height:20px; font-weight:bold;
+  padding-left:40px; }
+
+.relatedProductsBoxLinks li { list-style-type:square; color:#3c0d06; }
+
+.relatedProductsBoxLinks li a { font-family:Arial, Helvetica, sans-serif; 
+  text-decoration:underline; font-size:12px; color:#3c0d06; }
+
+.relatedProductsLeft { float:left; width:50%; }
+
+.relatedProductsRight { float:right; width:48%; }
+
+
+/* ------------------------------------------------------------------
+    Nutrition Facts
+   ------------------------------------------------------------------ */
+  
+#nutfacts {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  line-height: normal; 
+  width: 246px;
+  line-height: 1.5em;
+}
+
+#nutfacts h1 {
+  background: transparent;
+  border: 0;
+  font-weight: bold;
+}
+
+#nutfacts td {
+  border: 0;
+  padding: 0;
+  vertical-align: top;
+}
+
+#nutfacts b {
+  font-weight: bold;
+}
+
+#nutfacts p {
+  line-height: 14px;
+}
+
+#nutfacts table table {
+  width: 244px;
+  margin: 1px;
+}
+#nutfacts .Nutrition { font-size:11px; }
+#nutfacts .Nutrition p { font-size:10px; line-height:14px;}
+#nutfacts .NutritionHd { font-size:22px; }
+#nutfacts .NutritionSm { font-size:9px; }
+#nutfacts .Nutrition .center { text-align:center; }
+#nutfacts .Nutrition .right { text-align:right; float:none; }
+#nutfacts .NutritionSm .right { text-align:right; float:none; }
+#nutfacts .line { line-height:0; padding:0 0 2px 0; }
+#nutfacts .wideline { line-height:0; padding:3px 0 2px 0; }
+
+#nutfacts, .supplement-warning {
+  color: #333;
+}
+
+#nutfacts .header h3 {
+margin: 0;
+padding: 3px 0;
+font-size: 18px;
+}
+
+.supplement-warning{
+  font: 11px/15px Arial,sans-serif;
+  font-size: 10px;
+  line-height: 13px;
+}
+
+
+/* ------------------------------------------------------------------
+    Caffeine Meters
+   ------------------------------------------------------------------ */
+
+#caffeine { width:410px; margin:18px auto 0 auto; padding:0; font-size:11px;
+  font-family:Trebuchet, Verdana, Arial, Helvetica, sans-serif; 
+  text-align:left; background:#fdf1db; border:#4a1610 4px solid; 
+  line-height:normal; }
+#caffeine p.title { padding:6px 0; margin:0 0 9px 0; text-align:center;
+  font-size:1.6em; font-weight:bold; color:#4a1610; 
+  border-bottom:0px solid #4a1610; background:#ffdd78; }
+#caffeine p.footNote { padding:3px 0; margin:9px 0 0 0; text-align:center;
+  font-size:.9em; font-weight:normal; color:#4a1610; background:#ffdd78; }
+#caffeine #graph { margin:0 9px; padding:0; }
+#caffeine #graph div { margin:3px 0; padding:3px 0 0 0; width:100%; }
+#caffeine #graph div h1 { float:left; width:170px; margin:0; padding-top:3px;
+  text-align:right; color:#333; font-size:11px; font-weight:normal; line-height:1.1em; }
+#caffeine #graph div p { float:left; width:45px; margin:0 0 0 5px;
+  padding-top:3px; color:#333; text-align:center; font-size:10px; }
+#caffeine #graph div div.bar { float:left; width:170px; height:9px; 
+  margin:0 0 0 5px; padding:0; border-bottom:9px solid #9f170e; background:#AB322A; }
+
+
+/* ------------------------------------------------------------------
+    Ingredients
+   ------------------------------------------------------------------ */
+
+.ingredient { margin:0 24px 36px 24px; }
+.ingredient h2 span { font-style:italic; font-weight:normal; }
+.ingredient li { font-weight:bold; }
+.ingredient li span { font-style:italic; font-weight:normal; }
+

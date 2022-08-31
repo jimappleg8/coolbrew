@@ -1,0 +1,9 @@
+$Id$
+
+id = admin
+name = Admin
+description = The main administrative module that runs the hcgWeb Portal.
+extends = none
+base path = admin/index.php
+default page = admin/index
+restricted = 0

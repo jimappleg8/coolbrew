@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; Controllers
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>Controllers</h1>
+
+<p class="important"><strong>Note:</strong> This page is an extension of the <i>CodeIgniter User Guide</i> page of the same name. Please read the CodeIgniter <a href="http://www.codeigniter.com/user_guide/general/controllers.html">Controllers</a> page in addition to this page for complete information about this feature.</p>
+
+
+<h2>The <kbd>Hello World!</kbd> Example as a CoolBrew Tag</h2>
+
+<p>Let's rework the <a href="http://www.codeigniter.com/user_guide/general/controllers.html#hello">Hello World! example</a> from the CodeIgniter User Guide to create a simple CoolBrew module and controller. Start by creating a new module folder by duplicating the <dfn>_default</dfn> folder inside the <dfn>system/modules/</dfn> folder and renaming it <dfn>hello</dfn>.</p>
+
+<p>Now, using your text editor, create a file called <dfn>hello.php</dfn>, and put the following code in it:</p>
+
+
+<textarea class="textarea" style="width:100%" cols="50" rows="10">
+<?php
+class Hello extends Controller {
+
+	function world()
+	{
+		echo 'Hello World!';
+	}
+}
+?>
+</textarea>
+
+
+<p>Then save the file to your <dfn>system/modules/hello/controllers/</dfn> folder.</p>
+
+<p>Now, using your text editor, create another file called <dfn>hello-test.php</dfn>, and put the following code in it:</p>
+
+<textarea class="textarea" style="width:100%" cols="50" rows="15">
+&lt;?php
+require_once 'coolbrew.inc.php';
+?&gt;
+
+<html>
+<head>
+   <title>CoolBrew Hello World! Page</title>
+</head>
+<body>
+
+   &lt;p&gt;&lt;?php get('hello.world'); ?&gt;&lt;/p&gt;
+
+</body>
+</html>
+</textarea>
+
+<p>Now save that file to your website's document root folder and visit your site using a URL similar to this:</p>
+
+<code>
+http://www.your-site.com/hello-test.php
+</code>
+
+<p>If you did it right, you should see <samp>Hello World!</samp>.</p>
+
+
+<a name="functions"></a>
+<h2>More Tags</h2>
+
+<p>In the above example the function name is <dfn>world()</dfn>. You can add more tags to your controller by creating more functions. Add a new function to your controller:</p>
+
+<textarea class="textarea" style="width:100%" cols="50" rows="15">
+<?php
+class Hello extends Controller {
+
+	function world()
+	{
+		echo 'Hello World!';
+	}
+
+	function letterman()
+	{
+		echo 'Hello Mr. Letterman! It is so nice to be on your show.';
+	}
+}
+?>
+</textarea>
+
+<p>Now, add a second tag to your <dfn>hello-test.php</dfn> file, save it and upload it to your website's document root folder.</p>
+
+<textarea class="textarea" style="width:100%" cols="50" rows="17">
+&lt;?php
+require_once 'coolbrew.inc.php';
+?&gt;
+
+<html>
+<head>
+   <title>CoolBrew Hello World! Page</title>
+</head>
+<body>
+
+   &lt;p&gt;&lt;?php get('hello.world'); ?&gt;&lt;/p&gt;
+   
+   &lt;p&gt;&lt;?php get('hello.letterman'); ?&gt;&lt;/p&gt;
+
+</body>
+</html>
+</textarea>
+
+
+<p>Load the same URL as before to see the additional letterman tag display:</p>
+
+<code>
+http://www.your-site.com/hello-test.php
+</code>
+
+
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

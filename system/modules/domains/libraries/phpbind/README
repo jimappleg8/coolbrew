@@ -1,0 +1,48 @@
+class.bind8.php 1.0b is an abstracted class to control Bind 8.x's config files.
+Bind has quite a number of config files and we presently cannot focus on all of them.
+This release focuses on named.conf and it's respective zone files in the format:
+<domain name>.db.
+
+I have attempted to keep this class completely self contained, relying ONLY on the
+graces of Zend to implement everything.  I have not addressed any issues regarding
+server restarting, or any other server control.  I don't believe that should be a 
+concern of a php class.  Perhaps a server control class?
+
+To use this class, simply dump it into a convenient directory and edit it's 
+variable defaults, namely, where named.conf and the zone db files reside.
+
+This class is not designed to function with more then 1 Bind daemon.  While you
+CAN overload the variables before calling initialize and use this class on the
+config files of many Bind daemons, performance will choke since ALL the processes
+will lock on named.conf reads or writes, regardless of which file it is.
+This will be addressed in the next version, as well as performance issues.
+
+I also do not address IN-ADDR.ARPA (reverse lookups) in so much as we ignore them.
+We basically treat them as regular zones.  DO NOT try to add a reverse as you would
+a regular zone with the functions provided!  You will create an invalid reverse lookup
+file.  An addReverse() function will be added (and delReverse too)!
+
+SNAFU alert:  DO NOT.  I repeat DO NOT, ever activate the same domain with any concurrent
+processes.  There is NO LOCKING on the domain.db file.  Only the named.conf file uses
+locking.  In activate(), I've extended this locking to include dnsWritefile(). BUT
+dnsWriteFile() has no locking itself, so potential snafu's COULD happen!
+
+Version 1.0b written by Alexey Zilber alex@dayak.com
+Recent versions can be gotten from http://phpbind.sourceforge.net
+
+Props to Sourceforge for a kick-ass dev center.
+
+TO-DO:
+
+NOW:
++ Create all the del* functions (still unfinished), except for delReverse().
+
+Next minor version:
++ addReverse()
++ clean Multi-named.conf support (perhaps abtracting the locking mechanism).
++ domain.db file locking to prevent work on same domain by multiple servers.
+
+Next Major version:
++ Full shared mem support use to store checksums of named.conf to prevent multiple
+read/write passes.
++ more as I think them up...

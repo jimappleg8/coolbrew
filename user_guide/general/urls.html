@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+
+<title>CoolBrew User Guide</title>
+
+<style type='text/css' media='all'>@import url('../userguide.css');</style>
+<link rel='stylesheet' type='text/css' media='all' href='../userguide.css' />
+
+<script type="text/javascript" src="../nav/nav.js"></script>
+<script type="text/javascript" src="../nav/prototype.lite.js"></script>
+<script type="text/javascript" src="../nav/moo.fx.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	myHeight = new fx.Height('nav', {duration: 400});
+	myHeight.hide();
+}
+</script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv='expires' content='-1' />
+<meta http-equiv= 'pragma' content='no-cache' />
+<meta name='robots' content='all' />
+<meta name='author' content='Jim Applegate' />
+<meta name='description' content='CoolBrew User Guide' />
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"><script type="text/javascript">create_menu('../');</script></div></div>
+<div id="nav2"><a name="top"></a><a href="javascript:void(0);" onclick="myHeight.toggle();"><img src="../images/nav_toggle.jpg" width="153" height="44" border="0" title="Toggle Table of Contents" alt="Toggle Table of Contents" /></a></div>
+<div id="masthead">
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td><h1>CoolBrew User Guide Version 1.3
+<br /><span class="subtitle">Based on CodeIgniter Version 1.5.4</span></h1></td>
+<td id="breadcrumb_right"><a href="../toc.html">Full Table of Contents</a></td>
+</tr>
+</table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tr>
+<td id="breadcrumb">
+<a href="http://www.coolbrewcms.com/index.php">CoolBrew Home</a> &nbsp;&#8250;&nbsp; <a href="../index.html">User Guide Home</a> &nbsp;&#8250;&nbsp; CoolBrew URLs
+</td>
+<td id="searchbox"><form method="get" action="http://www.google.com/search"><input type="hidden" name="as_sitesearch" id="as_sitesearch" value="www.coolbrewcms.com/user_guide/" />Search User Guide&nbsp; <input type="text" class="input" style="width:200px;" name="q" id="q" size="31" maxlength="255" value="" />&nbsp;<input type="submit" class="submit" name="sa" value="Go" /></form></td>
+</tr>
+</table>
+
+
+
+<br clear="all" />
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+<h1>CoolBrew URLs</h1>
+
+<p class="important"><strong>Note:</strong> This page is an extension of the <i>CodeIgniter User Guide</i> page on the same topic. Please read the <a href="http://www.codeigniter.com/user_guide/general/urls.html">CodeIgniter URLs</a> page in addition to this page for complete information about this feature.</p>
+
+<h2>No Class/Method Needed</h2>
+
+<p>URLs in CoolBrew differ from CodeIgniter URLs in that they may not have to include information about the class and method being requested since in most cases that information is part of the tag and may be different for each tag in the file.</p>
+
+<p>Let's say that you have a CoolBrew controller called <samp>products</samp> designed to display product information on your website via a method called <samp>detail</samp>. In CodeIgniter, you would have to supply the controller and method as part of the URI, followed by the product ID. It might look like this:</p>
+
+<code>
+http://www.yourdomain.com/index.php/<samp>products</samp>/<samp>detail</samp>/247/
+</code>
+
+<p>With CoolBrew, you place a tag into your product detail page:</p>
+
+<code>
+&lt;?php get('<samp>products</samp>.<samp>detail</samp>'); ?&gt;
+</code>
+
+<p>Since the controller and method are specified in the tag, you need only to supply the product ID in the URL. Your URL might look like this:</p>
+
+<code>
+http://www.yourdomain.com/index.php/247/
+</code>
+
+<p>Granted, you probably won't have this tag on your home page, so your URL would probably look something like the URL below. It's no shorter than the CodeIgniter URL, but you get to use your existing static website pages:</p>
+
+<code>
+http://www.yourdomain.com/products/detail.php/247/
+</code>
+
+
+<h2>CodeIgniter Emulation</h2>
+
+<p>If you are using a tag to emulate CodeIgniter, then you will need to set up your URLs as you would for a CodeIgniter application. See the <a href="../general/emulating-ci.html">Emulating CodeIgniter</a> section in this guide for more information.</p>
+
+
+<h2>Supplying Data to Multiple Tags</h2>
+
+<p>If you want to supply variables to more than one tag, that can get a bit tricky, but you might find that it's unnecessary. Some of the things you might have passed via the URL in CodeIgniter may be able to be hard-coded into your PHP file since it is a specific file and not a generic index.php file. For example, where you might have had to supply a page ID to set a menu in CodeIgniter, that info can be supplied in the file, or can be based on the filename in CoolBrew.</p>
+
+<p>Alternatively, you can set up your URIs as key/value pairs so you can specify which variable goes with which value, and therefore assign them to the correct tags. See the <a href="http://www.codeigniter.com/user_guide/libraries/uri.html">URI Class</a> section of the CodeIgniter User Guide for more details.</p>
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="#top">Top of Page</a>&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;
+<a href="index.html">User Guide Home</a><p>
+
+<p><a href="http://www.coolbrewcms.com">CoolBrew</a> &nbsp;&middot;&nbsp; Copyright &#169; 2006 &nbsp;&middot;&nbsp; <a href="http://www.hain-celestial.com">The Hain Celestial Group, Inc.</a></p>
+</div>
+
+
+</body>
+</html>

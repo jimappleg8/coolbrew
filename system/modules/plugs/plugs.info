@@ -1,0 +1,9 @@
+$Id$
+
+id = plugs
+name = Plugs
+description = Implements the Tell a Friend feature.
+extends = sites
+base path = admin/plugs.php
+default page = tellafriend/index
+restricted = 1

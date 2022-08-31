@@ -1,0 +1,53 @@
+
+CREATE TABLE `stores_process` (
+  `ID` int(10) unsigned NOT NULL auto_increment,
+  `SiteID` varchar(20) NOT NULL default '',
+  `LocationID` int(11) NOT NULL default '0',
+  `CategoryID` int(11) NOT NULL default '0',
+  `CompanyID` int(11) NOT NULL default '0',
+  `JobNum` varchar(8) NOT NULL default '',
+  `Title` varchar(255) default NULL,
+  `Manager` varchar(255) default NULL,
+  `Summary` text,
+  `Description` text,
+  `Status` int(11) default NULL,
+  `CancelledNotes` text,
+  `ClosedNotes` text,
+  `CreatedDate` datetime default NULL,
+  `CreatedBy` varchar(16) NOT NULL default '',
+  `RevisedDate` datetime default NULL,
+  `RevisedBy` varchar(16) NOT NULL default '',
+  `CancelledDate` datetime default NULL,
+  `CancelledBy` varchar(16) NOT NULL default '',
+  `ClosedDate` datetime default NULL,
+  `ClosedBy` varchar(16) NOT NULL default '',
+  PRIMARY KEY  (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=92 ;
+
+
+CREATE TABLE `stores` (
+  `ID` int(10) unsigned NOT NULL auto_increment,
+  `StoreName` varchar(255) default NULL,
+  `Address1` varchar(255) default NULL,
+  `Address2` varchar(255) default NULL,
+  `City` varchar(255) default NULL,
+  `State` varchar(20) default NULL,
+  `Zip` varchar(15) default NULL,
+  `Phone` varchar(30) default NULL,
+  `Fax` varchar(30) default NULL,
+  `ContactEmail` varchar(255) default NULL,
+  `Website` varchar(255) default NULL,
+  `Brands` text,
+  `NotBrands` text,
+  `ContactName` varchar(255) default NULL,
+  `Source` varchar(255) default NULL,
+  `Country` varchar(255) default NULL,
+  `Notes` text,
+  `Etailer` int(11) default NULL,
+  `Retailer` int(11) default NULL,
+  `ContactPhone` varchar(30) default NULL,
+  `latitude` varchar(8) default NULL,
+  `longitude` varchar(8) default NULL,
+  `status` varchar(30) default NULL,
+  PRIMARY KEY  (`StoreID`)
+) ENGINE=MyISAM;

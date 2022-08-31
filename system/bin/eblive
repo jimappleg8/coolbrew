@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Earth's Best uplive script."
+echo ""
+
+ssh eagles rsync --exclude=family_tree/* -ra '/var/opt/httpd/ebstage/' '/var/opt/httpd/ebdocs/'
+echo 'copied from STAGING to LIVE on Eagles (ebstage --> ebdocs)'
+
+ssh seahawks rsync --exclude=family_tree/* -ra '/var/opt/httpd/ebstage/' '/var/opt/httpd/ebdocs/'
+echo 'copied from STAGING to LIVE on Seahawks (ebstage --> ebdocs)'
+
+exit 0

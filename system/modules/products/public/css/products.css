@@ -1,0 +1,32 @@
+
+/* Products-specific styles */
+
+/*-------------------------------------------------
+ NUTRITION FACTS FORM
+-------------------------------------------------*/
+#nlea { width:550px; border:2px solid #000; padding:18px; margin:0 0 12px 0;
+  font-family:helvetica, arial, sans-serif; font-size:14px; }
+#nlea h1 { font-size:32px; margin:0 0 6px 0; }
+#nlea .fact { clear:both; border-top:1px solid #000; }
+.subnlea { margin-left:24px; }
+#nlea .col1 { float:left; padding:7px 0; }
+#nlea .col2 { float:left; position:absolute; left:230px; padding-top:3px; 
+  font-size:12px; }
+#nlea .col2 input { padding:0 3px; width:50px; text-align:center; }
+#nlea .col3 { float:left; position:absolute; left:310px; padding-top:3px;  
+  font-size:12px; }
+#nlea .col3 input { padding:0 3px; width:50px; text-align:center;
+  font-weight:bold; }
+#nlea .col4 { float:left; position:absolute; left:420px; padding-top:3px;  
+  font-size:12px; }
+#nlea .col4 input { padding:0 3px; width:50px; text-align:center; }
+#nlea .col5 { float:left; position:absolute; left:500px; padding-top:3px;  
+  font-size:12px; }
+#nlea .col5 input { padding:0 3px; width:50px; text-align:center; 
+  font-weight:bold; }
+#nlea .colA { float:left; position:absolute; left:250px; padding-top:3px; 
+  font-size:12px; }
+#nlea .colA input { padding:0 3px; text-align:center; }
+#nlea .colB { float:left; position:absolute; left:430px; padding-top:3px;  
+  font-size:12px; }
+#nlea .colB input { padding:0 3px; text-align:center; }

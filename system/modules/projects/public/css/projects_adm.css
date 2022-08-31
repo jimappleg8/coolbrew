@@ -1,0 +1,271 @@
+/* Projects-specific styles */
+
+/* -------------------------------------------------
+   Stories Listing
+   ------------------------------------------------- */
+
+#stories {  }
+
+#stories .itemnum { width:52px; float:left; padding-left:1em; 
+  font-size:0.9em; color:#999; margin-top:1px; }
+#stories .description { width:368px; float:left; padding-left:1em; }
+#stories .client { width:110px; float:left; padding-left:1em; }
+#stories .assigned { width:50px; float:left; padding-left:1em; }
+#stories .deadline { width:65px; float:left; padding-left:1em; }
+#stories .sprint { width:65px; float:left; padding-left:1em; }
+#stories .status { float:left; margin:2px 0 0 1em; padding:0 0.5em;
+  line-height:1.2em; }
+
+#stories .listing { font-size:0.95em; }
+#stories .listing h1 { clear:both; margin:1em 0 0 0; }
+
+#stories .listing .heading { clear:both; width:100%; margin-top:2em;
+   padding-top:2px; border-bottom:2px solid #666; border-top:2px solid #666;
+   font-weight:bold; }
+#stories .listing .heading .itemnum { font-size:1em; color:#000; margin-top:0; }
+#stories .listing .heading .status { margin-top:0; }
+
+#stories .listing .project { margin:4px 0; padding:3px 6px; }
+#stories .listing .project a { color:#000; background:transparent; padding:2px;
+  text-decoration:none; }
+#stories .listing .project a:hover { color:#FFF; background:#00C; padding:2px; }
+
+#stories .listing .project .priority { border-bottom:1px solid #CCC;
+  padding-bottom:3px; }
+#stories .listing .project .priority-inner { clear:both; margin-top:0.5em; 
+  padding:1px 9px 1px 9px; margin-left:70px; width:350px; }
+  
+#stories .listing .project .summary { clear:both; margin-top:1em;
+  background:#E6E6E6; padding:1px 6px 2px 6px; }
+#stories .listing .project .projectName { font-weight:bold; font-size:14px; }
+
+#stories .listing .project .story { clear:both; width:100%; 
+  border-bottom:1px solid #CCC; }
+
+.greyed { color:#999; }
+
+
+/* -------------------------------------------------
+   Backlogs Listing
+   ------------------------------------------------- */
+
+#backlogs {  }
+
+#backlogs .itemnum { width:60px; float:left; padding-left:1em; 
+  font-size:0.9em; color:#999; }
+#backlogs .description { width:390px; float:left; padding-left:1em; }
+#backlogs .client { width:120px; float:left; padding-left:1em; }
+#backlogs .assigned { width:60px; float:left; padding-left:1em; }
+#backlogs .deadline { width:80px; float:left; padding-left:1em; }
+#backlogs .sprint { float:left; margin:0 0 0 1em; padding:0 0.5em;
+  line-height:1.2em; }
+
+#backlogs .listing h1 { clear:both; margin:1em 0 0 0; }
+
+#backlogs .listing .heading { clear:both; width:100%; margin-top:2em;
+   padding-top:2px; border-bottom:2px solid #666; border-top:2px solid #666;
+   font-weight:bold; }
+#backlogs .listing .heading .itemnum { font-size:1em; color:#000; }
+
+#backlogs .listing .project { margin:4px 0; padding:3px 6px; }
+#backlogs .listing .project a { color:#000; background:transparent; padding:2px;
+  text-decoration:none; }
+#backlogs .listing .project a:hover { color:#FFF; background:#00C; 
+  padding:2px; }
+
+#backlogs .listing .project .summary { clear:both; margin-top:1em;
+  background:#E6E6E6; padding:1px 6px 2px 6px; }
+#backlogs .listing .project .groupName { font-weight:bold; font-size:14px; }
+
+#backlogs .listing .project .story { clear:both; width:100%; 
+  border-bottom:1px solid #CCC; }
+
+
+/* -------------------------------------------------
+   Projects Listing
+   ------------------------------------------------- */
+
+#projects {  }
+
+#projects .listing .project-list .summary { clear:both; margin-top:0.5em;
+  background:#E6E6E6; padding:1px 6px 2px 6px; font-weight:bold; 
+  font-size:14px; }
+#projects .listing .project-list a { color:#000; background:transparent;
+  padding:2px; text-decoration:none; }
+#projects .listing .project-list a:hover { color:#FFF; background:#00C;
+  padding:2px; }
+
+#projects .listing .project-list .item { clear:both; padding:1px 6px 2px 6px; 
+  border-bottom:1px solid #CCC; }
+#projects .listing .project-list .projectName { font-weight:bold; }
+
+
+/* -------------------------------------------------
+   Sprints Listing
+   ------------------------------------------------- */
+
+#sprints {  }
+
+#sprints .itemnum { width:60px; float:left; padding-left:1em; 
+  font-size:0.9em; color:#999; }
+#sprints .description { width:390px; float:left; padding-left:1em; }
+#sprints .client { width:120px; float:left; padding-left:1em; }
+#sprints .assigned { width:60px; float:left; padding-left:1em; }
+#sprints .deadline { width:80px; float:left; padding-left:1em; }
+#sprints .status { float:left; margin:2px 0 0 1em; padding:0 0.5em;
+  line-height:1.2em; }
+
+#sprints .listing h1 { clear:both; margin:1em 0 0 0; }
+
+#sprints .listing .heading { clear:both; width:100%; margin-top:2em;
+   padding-top:2px; border-bottom:2px solid #666; border-top:2px solid #666;
+   font-weight:bold; }
+#sprints .listing .heading .itemnum { font-size:1em; color:#000; }
+#sprints .listing .heading .status { margin-top:0; }
+
+#sprints .listing .project { margin:4px 0; padding:3px 6px; }
+#sprints .listing .project a { color:#000; background:transparent; padding:2px;
+  text-decoration:none; }
+#sprints .listing .project a:hover { color:#FFF; background:#00C; padding:2px; }
+
+#sprints .listing .project .summary { clear:both; margin-top:1em;
+  background:#E6E6E6; padding:1px 6px 2px 6px; }
+#sprints .listing .project .projectName { font-weight:bold; font-size:14px; }
+
+#sprints .listing .project .story { clear:both; width:100%; 
+  border-bottom:1px solid #CCC; }
+
+
+/* -------------------------------------------------
+   Search
+   ------------------------------------------------- */
+   
+#searches {  }
+
+#searches .itemnum { width:50px; float:left; padding-left:1em; 
+  font-size:0.9em; color:#999; margin-top:1px; }
+#searches .description { width:360px; float:left; padding-left:1em; }
+#searches .client { width:140px; float:left; padding-left:1em; }
+
+#searches .listing .item { clear:both; width:100%; 
+  border-bottom:1px solid #CCC; margin-bottom:6px; padding-bottom:6px; }
+
+#searches .listing .item .project a { color:#333; clear:both; font-size:1.2em; 
+  font-weight:normal; text-decoration:none; }
+#searches .listing .item .project a:hover { text-decoration:underline;
+  background-color:transparent; }
+#searches .listing .project .groupName { font-weight:bold; }
+
+#searches .listing .item .story { clear:both; width:100%; }
+
+
+/* -------------------------------------------------
+   Priorities
+   ------------------------------------------------- */
+
+.very-high { color:#FFF; background-color:#F00; }
+.high { color:#FFF; background-color:#F26522; }
+.medium { color:#FFF; background-color:#ABA000; }
+.low { color:#FFF; background-color:#00A651; }
+.very-low { color:#FFF; background-color:#09F; }
+.vendor-support { color:#000; background-color:#F90; }
+.unplanned { color:#FFF; background-color:#963; }
+.archive { color:#FFF; background-color:#666; }
+
+/* -------------------------------------------------
+   Statuses
+   ------------------------------------------------- */
+
+.not-started { color:#000; background-color:#FFF; }
+.in-progress { color:#000; background-color:#FF0; }
+.completed { color:#000; background-color:#0F0; }
+.deferred { color:#FFF; background-color:#936; }
+.testing { color:#000; background-color:#0CF; }
+.cancelled { color:#FFF; background-color:#F00; }
+
+
+/* -------------------------------------------------
+   Other styles
+   ------------------------------------------------- */
+
+#read-only { border-bottom:1px solid #FC0; border-top:0px solid #FC0;
+  border-left:1px solid #999; border-right:1px solid #999; 
+  padding:0 20px 0 20px; margin:0; background:#FF9; clear:both; }
+#read-only p { color:#900; padding:4px 0 4px 0; margin:0; background:#FF9;
+  font-size:11px; }
+
+#message { border-bottom:1px solid #69C; border-top:0px solid #69C;
+  border-left:1px solid #999; border-right:1px solid #999; 
+  padding:0 20px 0 20px; margin:0; background:#9CF; clear:both; }
+#message p { color:#036; padding:4px 0 4px 0; margin:0; background:#9CF;
+  font-size:11px; }
+
+ 
+.inline-form { padding:12px; border:1px solid #666; background:#D0D0D0;
+   margin:12px auto 12px auto; width:500px; }
+
+#workflow #client { font-size:10px; line-height:1.6em; text-align:right;
+  padding-bottom:10px; }
+
+#workflow .section { border-top:2px solid #666; }
+#workflow .section h2 { font-size:14px; }
+
+#workflow .task { margin-left:24px; border-top:1px solid #666; font-size:11px;
+  clear:both; }
+#workflow .task div.status { float:right; padding-top:8px; }
+#workflow .task div.status form { display:inline; }
+#workflow .task div.status input[type="image"] { vertical-align:middle; }
+#workflow .task div.status span { font-size:16px; color:#090; 
+  padding-right:6px; }
+#workflow .task p.tools { padding-left:24px; }
+
+#workflow #removed { border:1px solid #333; background:#CCC none;
+  margin-top:36px; padding:12px 24px 12px 24px; }
+#workflow #removed h2 { font-size:12px; margin-top:0; }
+
+#schedule-cal { padding:12px; width:794px; border:1px solid #FC0;
+  background:#FF9; margin:0 auto; }
+#schedule-cal .year { margin:6px 0; clear:both; border:2px solid #FC0; 
+   padding:12px; background:#FFF; }
+#schedule-cal .year h2 { padding:0; margin:0; font-size:14px; }
+#schedule-cal .month h3 { clear:both; float:left; width:50px;
+  padding:0 0 0 6px; margin:0; font-size:12px; border-right:1px solid #333; 
+  vertical-align:middle; }
+#schedule-cal .resrc h4 { float:left; width:50px; height:10px;
+  padding:0 0 0 6px; margin:0; font-size:8px; border-right:1px solid #333; 
+  vertical-align:middle; }
+#schedule-cal .day { float:left; width:20px; height:10px; font-size:11px;
+   text-align:center; border-right:1px solid #333; }
+#schedule-cal .line { border-bottom:1px solid #333; }
+#schedule-cal .head { height:15px; padding:0; }
+/* start type colors */
+.blank { background:#FFF; color:#000; }  /* white */
+.noday { background:#000; color:#FFF; }  /* black */
+.today { background:#F93; color:#FFF; }  /* orange */
+.weekend { background:#CCC; color:#000; }  /* grey */
+.holiday { background:#F00; color:#FFF; }  /* red */
+.vacation { background:#090; color:#FFF; }  /* green */
+.proposed { background:#FC0; color:#000; }  /* yellow */
+.accepted { background:#06C; color:#FFF; }  /* blue */
+.rejected { background:#F00; color:#FFF; }  /* red */
+
+.timeblock { padding:9px; border:1px solid #666; background:#FF9;
+   margin:12px auto 0 auto; width:600px; font-size:12px; }
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; 
+  visibility: hidden; }
+/* Hides from IE-mac \*/ 
+* html .clearfix { height:1%; }
+/* End hide from IE-mac */
+
+@media print {
+   #Header { display:none; }
+   a.admin { display:none }
+   
+   .listing .project { border-top:1px solid #666; page-break-inside:avoid; }
+   .listing .project .summary { page-break-inside:avoid; }
+   .listing .project .duedate { page-break-inside:avoid; }
+   .listing .project .basecamp { page-break-inside:avoid; }
+   .listing .project .status { page-break-inside:avoid; }
+   
+}

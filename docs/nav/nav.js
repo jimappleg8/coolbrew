@@ -87,7 +87,7 @@ function create_menu(basepath)
 
 		'<h3>Additional Resources</h3>' +
 		'<ul>' +
-		'<li><a href="http://www.coolbrewcms.com/forum/">CoolBrew Forums</a></li>' +
+		'<li><a href="https://github.com/jimappleg8/coolbrew/forum/">CoolBrew Forums</a></li>' +
 		'<li><a href="http://www.codeigniter.com/">CodeIgniter Website</a></li>' +
 		'</ul>' +	
 		

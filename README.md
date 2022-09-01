@@ -19,18 +19,18 @@ I wrote a number of modules for CoolBrew including products, store locator, Acti
 
 ## Screen Shots
 
-![Cooolbrew Open Source website](images/cbcms-01.jpg)
+![Coolbrew Open Source website](images/cbcms-01.jpg)
 
 ---
 
-![Cooolbrew Open Source website](images/cbcms-02.jpg)
+![Coolbrew Open Source website](images/cbcms-02.jpg)
 
 ---
 
-![Cooolbrew Open Source website](images/cbcms-03.jpg)
+![Coolbrew Open Source website](images/cbcms-03.jpg)
 
 ---
 
-![Cooolbrew Open Source website](images/cbcms-04.jpg)
+![Coolbrew Open Source website](images/cbcms-04.jpg)
 
 
